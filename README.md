@@ -1,6 +1,6 @@
 ## rct - Router Configuration Tool
 
-Router Configuration Tool(rct) is simple configuration interface for Vector Path Processing (VPP, fd.io) with limited feature set. This tool is set of systemd services and few app.
+Router Configuration Tool is simple configuration interface for Vector Path Processing (VPP, fd.io) with limited feature set. This tool is set of systemd services and few app.
 
 ### !!! not for production usage !!!
 
@@ -32,6 +32,9 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 `rconfig address add 192.168.15.1/24 interface vlan77`# configure address\
 `rconfig commit`# perform diff commit\
 `rconfig save`
+
+### rconfig quick example && show
+![rconfig cli example](https://github.com/petrbol/RouterConfigurationTool/blob/main/rconfigExample.png?raw=true)
 
 ### rctExporter quick look
 ![rctExporter example](https://github.com/petrbol/RouterConfigurationTool/blob/main/rctExporter.png?raw=true)
