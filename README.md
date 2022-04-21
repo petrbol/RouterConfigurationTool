@@ -8,6 +8,7 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 - Based on VPP 22.06-rc & linux-cp plugin. Thanks to all people that participate in this project.
 - set of app: `rconfig, rctWatchdog, rctExporter`
 - set of systemd services: `rctBird, rctExporter, extExporterCp, rctSshd, rctWatchdog, rctVpp, rctStart`
+- default directory `/etc/rct`
  
 ### Key features
 - Differential configuration VPP using govpp api
@@ -16,7 +17,8 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 - IPv4/IPv6 a routing
 - Dot1q, QoQ
 - VXLAN tunnels
-- Bridge Domain and ports configuration
+- Loopbacks (BVI)
+- Bridge Domain and ports configuration (SHG, POP 1)
 - L2xconnect
 - Exporter for interface statistics based on Prometheus(prometheus.io)
 - Watchdog
