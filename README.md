@@ -26,10 +26,10 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
 
 ### Configuration example
-`rconfig vlan add vlan77 interface enp3s0`\
-`rconfig vlan set vlan77 Dot1q 15 ExactMatch true`\
-`rconfig address add 192.168.15.1/24 interface vlan77`\
-`rconfig commit`\
+`rconfig vlan add vlan77 interface enp3s0`# add vlan subinterface\
+`rconfig vlan set vlan77 Dot1q 15 ExactMatch true`# set Dot1q main tag\
+`rconfig address add 192.168.15.1/24 interface vlan77`# configure address\
+`rconfig commit`# perform diff commit\
 `rconfig save`
 
 ### Requirements
