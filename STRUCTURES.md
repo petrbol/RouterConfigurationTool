@@ -1,3 +1,30 @@
+### Main config file structure
+```go
+type ConfigFileStruct struct {
+	Ethernet     []EthernetStruct
+	Loopback     []LoopbackStruct
+	BridgeDomain []BridgeDomainStruct
+	L2xConnect   []L2xConnectStruct
+	Vxlan        []VxlanStruct
+	Vpp          VppStruct
+	Services     ServicesStruct
+}
+
+type VppStruct struct {
+	MainCore uint8
+	Workers  uint8
+}
+
+type ServicesStruct struct {
+	Bird       bool
+	Sshd       bool
+	Watchdog   bool
+	Exporter   bool
+	ExporterCp bool
+}
+
+```
+### Interfaces structure
 ```go
 // ethernet config struct
 type EthernetStruct struct {

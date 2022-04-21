@@ -27,7 +27,7 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 ### Requirements:
 * Debian 11
 * VPP capable hardware
-* Multicore CPU (4 or more cores for best results)
+* Multicore CPU (4 or more cores for better results)
 * Hardware with DPDK capable interface
 * Minimum 2 ethernet interface (one for VPP and one for management)
 
