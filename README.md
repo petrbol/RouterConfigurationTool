@@ -4,6 +4,19 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 
 ### !!! not for production usage !!!
 
+### Annotations
+- Based on VPP 22.06-rc & linux-cp plugin. Thanks to all people that participate in this project.
+ 
+### Key features
+- Differential configuration VPP using govpp api
+- Simplest vpp startup configuration generator (you dont need to configure VPP manually)
+- IPv4/IPv6 a routing
+- Dot1q, QoQ
+- VXLAN tunnels
+- Bridge Domain and ports configuration
+- L2xconnect
+- Exporter for interface statistics based on Prometheus(prometheus.io)
+- Watchdog
 
 ### Requirements:
 * Debian 11
