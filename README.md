@@ -34,7 +34,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 `rconfig save`
 
 ### rconfig quick example && show
-![rconfig cli example](https://github.com/petrbol/RouterConfigurationTool/blob/main/rconfigExample.png?raw=true|height=100px)
+[[https://github.com/petrbol/RouterConfigurationTool/blob/main/rconfigExample.png|height=100px]]
 
 ### rctExporter quick look
 ![rctExporter example](https://github.com/petrbol/RouterConfigurationTool/blob/main/rctExporter.png?raw=true)
