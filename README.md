@@ -7,8 +7,9 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 ### Annotations
 - Based on VPP 22.06-rc & linux-cp plugin. Thanks to all people that participate in this project.
 - set of app: `rconfig, rctWatchdog, rctExporter`
-- set of systemd services: `rctBird, rctExporter, extExporterCp, rctSshd, rctWatchdog, rctVpp, rctStart`
+- set of systemd services: `rctBird, rctExporter, rctExporterCp, rctSshd, rctWatchdog, rctVpp, rctStart`
 - default directory `/etc/rct`
+- json configuration files
  
 ### Key features
 - Differential configuration VPP using govpp api
@@ -24,7 +25,14 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 - Watchdog
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
 
-### Requirements:
+### Configuration example
+`rconfig vlan add vlan77 interface enp3s0
+rconfig vlan set vlan77 Dot1q 15 ExactMatch true
+rconfig address add 192.168.15.1/24 interface vlan77
+rconfig commit
+rconfig save`
+
+### Requirements
 * Debian 11
 * VPP capable hardware
 * Multicore CPU (4 or more cores for better results)
