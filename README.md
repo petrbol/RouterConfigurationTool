@@ -22,7 +22,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Loopbacks (BVI)
 - Bridge Domain and ports configuration (SHG, POP 1)
 - L2xconnect
-- Exporter for interface statistics based on Prometheus(prometheus.io) with customized interface names
+- Exporter for interface statistics based on Prometheus(prometheus.io) with customized interface names, grafana template included
 - Watchdog
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
 
