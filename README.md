@@ -1,2 +1,2 @@
-##VPP router counfiguration interface
-###!!! not for production usage !!!
+## VPP router counfiguration interface
+###!!! not for production use !!!
