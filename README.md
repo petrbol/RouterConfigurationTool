@@ -6,6 +6,7 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 
 ### Annotations
 - Based on VPP 22.06-rc & linux-cp plugin. Thanks to all people that participate in this project.
+- rconfig written in GO, Cobra cli interface, bash-completion
 - set of app: `rconfig, rctWatchdog, rctExporter`
 - set of systemd services: `rctBird, rctExporter, rctExporterCp, rctSshd, rctWatchdog, rctVpp, rctStart`
 - default directory `/etc/rct`, json configuration files
@@ -54,7 +55,8 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
 6. install rct package\
 `dpkg -i rct*.deb`
-7. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
+7. logout & login to make bash-completion work correctly
+8. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
 `rconfig vpp set Workers 3` # configure VPP to use 3 cpu cores for workers\
 `rconfig vpp set MainCore 0` # can be skipped, default value is 0\
