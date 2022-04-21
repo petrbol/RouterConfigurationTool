@@ -28,5 +28,7 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 `rconfig vpp setup` # start setup\
 `rconfig vpp set Workers 3` # configure VPP to use 3 cpu cores for workers\
 `rconfig vpp set MainCore 0` # can be skipped, default value is 0\
-`systemctl start rctStart` # if everything is ok, you can enable service after start bellow 
-`systemctl enable rctStart` # enable rct after start
+`systemctl start rctStart` # if everything is ok, you can enable service after start bellow
+
+If `vppctl show intefaces` show your interfaces and you are still connected to the management port, you can enable rct on startup.\
+`systemctl enable rctStart`
