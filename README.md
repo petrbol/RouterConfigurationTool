@@ -1,4 +1,4 @@
-## *** Work in progress, deb packages not uploaded for this moment ***
+## *** Work in progress, deb packages not uploaded at this moment ***
 
 ## rct - Router Configuration Tool
 
