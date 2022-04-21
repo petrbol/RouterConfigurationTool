@@ -61,4 +61,4 @@ If `vppctl show intefaces` show your interfaces and you are still connected to t
 `systemctl enable rctStart`
 
 ### Remove
-`apt purge rct* -y`
+`apt purge rct* -y && rm -rf /etc/rct && reboot`
