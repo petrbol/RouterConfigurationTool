@@ -34,6 +34,7 @@ Router Configuration Tool(rct) is simple configuration interface for Vector Path
 `rconfig save`
 
 ### rctExporter quick look
+![rctExporter example](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
 
 
 ### Requirements
