@@ -6,6 +6,11 @@ rconfig [command] --help
 rconfig show
 ```
 ***
+### VPP configuration example
+```
+rconfig vpp set MainCore 0 Workers 3
+```
+***
 ### commit help
 ```
 rconfig commit # commit updates only
@@ -47,6 +52,15 @@ rconfig vlan add vlan77 interface enp4s0
 rconfig vlan set vlan77 Dot1q 77 ExactMatch false Pop1 true
 ```
 ExacMatch false. Pop1 options strip vlan header for bridge with other interface/bvi.
+***
+```
+### vlan QinQ
+rconfig vlan add vlan77 interface enp4s0
+rconfig vlan set vlan77 Dot1q 77
+rconfig vlan add vlanQinQ199 interface enp4s0
+rconfig vlan set vlanQinQ199 Dot1q 77 InnerDot1q 199 ExactMatch true
+```
+Master interface (vlan with tag 77) must be declared to add QinQ vlan 199.
 ***
 ### bridge domain example
 ```
