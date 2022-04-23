@@ -6,26 +6,26 @@ rconfig [command] --help
 rconfig show
 ```
 ***
-###commit help
+### commit help
 ```
 rconfig commit # commit updates only
 rconfig commit dpdk # full load after dpdk modify
 rconfig save # after succesfull commit
 ```
 ***
-###manual ethernet interface add
+### manual ethernet interface add
 ```
 rconfig ethernet add eth7
 rconfig ethernet set eth7 DpdkPciDeviceId 0000:04:00.0 DpdkRxQueues 1 DpdkTxQueues 1
 ```
 ***
-###*ip address example
+### ip address example
 ```
 rconfig address add 192.168.15.1/24 interface enp3s0
 rconfig address add 2a01:100::1/64 interface enp3s0
 ```
 ***
-###*loopback
+### *loopback
 ```
 rconfig loopback add loopBr1BVI
 ```
