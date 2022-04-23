@@ -36,6 +36,9 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 `rconfig commit`# perform diff commit\
 `rconfig save`
 
+### Documentation
+Most configurable options can be found in structures.md and examples.md
+
 ### rconfig quick example & show
 ![rconfig example](img/rconfigExample.png?raw=true)
 
