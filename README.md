@@ -4,7 +4,7 @@
 
 Router Configuration Tool is simple configuration interface for Vector Path Processing (VPP, fd.io) with limited feature set. This tool is set of systemd services and few app.
 
-### !!! not for production usage !!!
+### !!! not for production usage, use at your own risk !!!
 
 ### Annotations
 - Based on VPP 22.06-rc & linux-cp plugin. Thanks to all people that participate in this project.
