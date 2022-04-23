@@ -65,11 +65,10 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 7. logout & login to make bash-completion work correctly
 8. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
-`rconfig vpp set Workers 3` # configure VPP to use 3 cpu cores for workers\
-`rconfig vpp set MainCore 0` # can be skipped, default value is 0\
+`rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers\
 `systemctl start rctStart` # if everything is ok, you can enable service after start bellow
 
-If `vppctl show intefaces` show your interfaces and you are still connected to the management port, you can enable rct on startup.\
+If `vppctl show interface` show your interfaces and you are still connected to the management port, you can enable rct on startup.\
 `systemctl enable rctStart`
 
 ### Remove
