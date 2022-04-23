@@ -25,13 +25,13 @@ rconfig address add 192.168.15.1/24 interface enp3s0
 rconfig address add 2a01:100::1/64 interface enp3s0
 ```
 ***
-### *loopback
+### loopback
 ```
 rconfig loopback add loopBr1BVI
 ```
 Add loopback name "loopBr1BVI".
 ***
-###*vlan L3 example 
+### vlan L3 example 
 L3 routing vlan, not bridge member.
 ```
 rconfig vlan add vlan77 interface enp4s0
@@ -40,7 +40,7 @@ rconfig address add 192.168.15.1/24 interface vlan77
 ```
 ExacMatch true for L3.
 ***
-###*vlan L2 example
+### vlan L2 example
 L3 routing vlan, not bridge member.
 ```
 rconfig vlan add vlan77 interface enp4s0
@@ -48,7 +48,7 @@ rconfig vlan set vlan77 Dot1q 77 ExactMatch false Pop1 true
 ```
 ExacMatch false. Pop1 options strip vlan header for bridge with other interface/bvi.
 ***
-###*bridge domain example
+### bridge domain example
 ```
 rconfig bridge add br1 # add bridge domain name br1
 rconfig bridge set br1 Comment "test comment"
