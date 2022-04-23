@@ -21,6 +21,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - IPv4/IPv6 a routing
 - Dot1q, QoQ
 - VXLAN tunnels
+- ABF+ACL policy filtering
 - Loopbacks (BVI)
 - Bridge Domain and ports configuration (SHG, POP 1)
 - L2xconnect
@@ -35,11 +36,11 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 `rconfig commit`# perform diff commit\
 `rconfig save`
 
-### rconfig quick example && show
-![rconfig example](rconfigExample2.png?raw=true)
+### rconfig quick example & show
+![rconfig example](rconfigExample.png?raw=true)
 
 ### rctExporter quick look
-![rctExporter example](rctExporter2.png?raw=true)
+![rctExporter example](rctExporter.png?raw=true)
 
 
 ### Requirements
