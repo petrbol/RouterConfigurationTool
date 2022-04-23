@@ -37,10 +37,10 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 `rconfig save`
 
 ### rconfig quick example & show
-![rconfig example](rconfigExample.png?raw=true)
+![rconfig example](images/rconfigExample.png?raw=true)
 
 ### rctExporter quick look
-![rctExporter example](rctExporter.png?raw=true)
+![rctExporter example](images/rctExporter.png?raw=true)
 
 
 ### Requirements
