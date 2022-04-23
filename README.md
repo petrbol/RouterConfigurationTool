@@ -70,9 +70,8 @@ Most configurable options can be found in structures.md and help.md
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers and core 0 as main\
 `systemctl start rctStart` # if everything is ok, you can enable service after start bellow
-
-If `vppctl show interface` show your interfaces and you are still connected to the management port, you can enable rct on startup.\
-`systemctl enable rctStart`
+9. If `vppctl show interface` show your interfaces and you are still connected to the management port, you can enable rct on startup.`systemctl enable rctStart`
+10. Enjoy `rconfig --help` 
 
 ### Remove
 `apt purge rct* -y && rm -rf /etc/rct && reboot`
