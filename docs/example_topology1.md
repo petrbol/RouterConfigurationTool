@@ -1,7 +1,8 @@
 >#### topology
 
 
->#### configuration commands
+>#### rconfig
+> configuration commands
 ```
 # additional ethernet configuration 
 rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2
@@ -50,7 +51,8 @@ rconfig service set Sshd true
 rconfig commit
 rconfig save
 ```
->#### bird.conf example configuration
+>#### bird.conf
+> example configuration
 ```
 router id 10.254.0.1;
 protocol device { scan time 30; }
@@ -89,7 +91,8 @@ protocol ospf v2 {
     };
 }
 ```
->#### rconfig show # show current configuration
+>#### rconfig show
+> show current configuration
 ```json lines
 {
  "Ethernet": [
