@@ -65,7 +65,8 @@ Configurable examples can be found in [docs](docs)
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
 6. install rct package\
 `dpkg -i rct*.deb`
-7. logout & login to make bash-completion work correctly
+7. reload bash completion file (or logout & login to make bash-completion work again)\
+`. /etc/profile.d/rconfig.sh`
 8. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers and core 0 as main\

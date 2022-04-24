@@ -29,6 +29,9 @@ protocol ospf v2 {
 	    transmit delay 1;
 	    password "password";
 	};
+	interface "loop1Br1" {
+	    stub;
+        };
     };
 }
 
