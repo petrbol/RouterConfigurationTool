@@ -37,7 +37,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
 
 ### Configuration example
-`rconfig vlan add vlan77 interface enp3s0`# add vlan subinterface\
+>`rconfig vlan add vlan77 interface enp3s0`# add vlan subinterface\
 `rconfig vlan set vlan77 Dot1q 15 ExactMatch true`# set Dot1q main tag\
 `rconfig address add 192.168.15.1/24 interface vlan77`# configure address\
 `rconfig commit`# perform diff commit\
@@ -61,25 +61,25 @@ Configurable examples can be found in [docs](docs)
 * Minimum 2 ethernet interface (one for VPP and one for management)
 
 ### Installation
-1. install Debian 11 
-2. modify /etc/default/grub to set isolcpu for VPP\
+>1. install Debian 11 
+>2. modify /etc/default/grub to set isolcpu for VPP\
 ```GRUB_CMDLINE_LINUX="isolcpus=1,2,3"```
-3. install VPP depends\
+>3. install VPP depends\
 `apt install bird2 sed libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
-4. install VPP from prepaired .deb packages\
+>4. install VPP from prepaired .deb packages\
 `dpkg -i vpp*.deb`
-5. update grub, disable VPP service and perform reboot before install rct .deb package\
+>5. update grub, disable VPP service and perform reboot before install rct .deb package\
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
-6. install rct package\
+>6. install rct package\
 `dpkg -i rct*.deb`
-7. reload bash completion file (or logout & login to make bash-completion work again)\
+>7. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
-8. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
+>8. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers and core 0 as main\
 `systemctl start rctStart` # if everything is ok, you can enable service after start bellow
-9. If `vppctl show interface` show your interfaces and you are still connected to the management port, you can enable rct on startup.`systemctl enable rctStart`
-10. Enjoy `rconfig --help` 
+>9. If `vppctl show interface` show your interfaces and you are still connected to the management port, you can enable rct on startup.`systemctl enable rctStart`
+>10. Enjoy `rconfig --help` 
 
 ### Remove
 `apt purge rct* -y && rm -rf /etc/rct && reboot`
