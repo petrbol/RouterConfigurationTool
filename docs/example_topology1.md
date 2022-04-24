@@ -41,14 +41,16 @@ rconfig bridge port set vlan2603 Shg 1
 rconfig abf policy add custPolicy interface loopBr1Cust
 rconfig abf rule add custPolicy IsPermit 0 SrcPrefix 192.168.55.0/24 DstPrefix 10.10.15.0/24
 
-# enable rctBird service
-rconfig services set Bird true
+# enable services 
+rconfig service set Bird true
+rconfig service set ExporterCp true
+rconfig service set Sshd true
 
 # commit and save
 rconfig commit
 rconfig save
 ```
-#### example bird.conf configuration
+#### bird.conf example configuration
 ```
 router id 10.254.0.1;
 protocol device { scan time 30; }

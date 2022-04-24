@@ -10,7 +10,14 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Based on VPP 22.06-rc & linux-cp plugin. Thanks to all people that participate in this project.
 - rconfig written in GO, Cobra cli interface, bash-completion
 - set of app: `rconfig, rctWatchdog, rctExporter`
-- set of systemd services: `rctBird, rctExporter, rctExporterCp, rctSshd, rctWatchdog, rctVpp, rctStart`
+- set of systemd services:\
+  -`rctBird` # use default bird conf file location\
+  -`rctExporter`\
+  -`rctExporterCp`\
+  -`rctSshd` # use default sshd conf file location  \
+  -`rctWatchdog`\
+  -`rctVpp`\
+  -`rctStart`
 - default directory `/etc/rct`, json configuration files
  
 ### Key features
