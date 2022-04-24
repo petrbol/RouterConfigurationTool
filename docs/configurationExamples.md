@@ -64,11 +64,11 @@ Master interface (vlan with tag 77) must be declared to add QinQ vlan 199.
 ***
 ### bridge domain example
 ```
-rconfig bridge add br1 # add bridge domain name br1
-rconfig bridge set br1 Comment "test comment"
-rconfig port add enp3s0 bridge br1
-rconfig port add loopBr1BVI bridge br1
-rconfig port add vlan77 bridge br1
-rconfig port set loopBr1BVI PortType 1
+rconfig bridge domain add br1 # add bridge domain name br1
+rconfig bridge domain set br1 Comment "test comment"
+rconfig bridge port add enp3s0 bridge br1
+rconfig bridge port add loopBr1BVI bridge br1
+rconfig bridge port add vlan77 bridge br1
+rconfig bridge port set loopBr1BVI PortType 1
 ```
 PortType 1 is set to configure BVI.
