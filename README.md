@@ -42,7 +42,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 `rconfig commit`# perform diff commit\
 `rconfig save`
 
-># Documentation
+>## Documentation
 Configurable examples can be found in [docs](docs)
 
 ### rconfig quick example & show
