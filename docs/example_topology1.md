@@ -48,6 +48,45 @@ rconfig services set Bird true
 rconfig commit
 rconfig save
 ```
+#### example bird.conf configuration
+```
+router id 10.254.0.1;
+protocol device { scan time 30; }
+protocol direct { ipv4; ipv6; check link yes; }
+protocol kernel kernel4 {
+    ipv4 { import all; export where source != RTS_DEVICE; };
+    learn;
+    scan time 300;
+}
+
+protocol kernel kernel6 {
+    ipv6 { import all; export where source != RTS_DEVICE; };
+    learn;
+    scan time 300;
+}
+
+protocol ospf v2 {
+    ipv4 { import all; export where source != RTS_DEVICE; };
+    area 0.0.0.0 {
+    interface "enp2s0" {
+        authentication simple;
+        dead 40;
+        retransmit 5;
+        hello 10;
+        priority 1;
+        cost 10;
+        transmit delay 1;
+        password "password";
+    };
+    interface "loopBr1Cust" {
+        stub;
+    };
+    interface "vlan2600" {
+        stub;
+    };
+    };
+}
+```
 #### rconfig show # show current configuration
 ```json lines
 {
@@ -240,46 +279,5 @@ rconfig save
   "Exporter": true,
   "ExporterCp": false
  }
-}
-```
-
-
-#### example bird.conf configuration
-```
-router id 10.254.0.1;
-protocol device { scan time 30; }
-protocol direct { ipv4; ipv6; check link yes; }
-protocol kernel kernel4 {
-    ipv4 { import all; export where source != RTS_DEVICE; };
-    learn;
-    scan time 300;
-}
-
-protocol kernel kernel6 {
-    ipv6 { import all; export where source != RTS_DEVICE; };
-    learn;
-    scan time 300;
-}
-
-protocol ospf v2 {
-    ipv4 { import all; export where source != RTS_DEVICE; };
-    area 0.0.0.0 {
-    interface "enp2s0" {
-        authentication simple;
-        dead 40;
-        retransmit 5;
-        hello 10;
-        priority 1;
-        cost 10;
-        transmit delay 1;
-        password "password";
-    };
-    interface "loopBr1Cust" {
-        stub;
-    };
-    interface "vlan2600" {
-        stub;
-    };
-    };
 }
 ```
