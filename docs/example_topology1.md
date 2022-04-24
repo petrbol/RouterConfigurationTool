@@ -1,7 +1,7 @@
 >#### topology
 
 
->#### rconfig
+>### rconfig
 > configuration commands
 ```
 # additional ethernet configuration 
@@ -51,7 +51,7 @@ rconfig service set Sshd true
 rconfig commit
 rconfig save
 ```
->#### bird.conf
+>### bird.conf
 > example configuration
 ```
 router id 10.254.0.1;
@@ -91,7 +91,7 @@ protocol ospf v2 {
     };
 }
 ```
->#### rconfig show
+>### rconfig show
 > show current configuration
 ```json lines
 {
