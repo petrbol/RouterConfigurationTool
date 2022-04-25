@@ -1,4 +1,4 @@
-### Main config file structure
+>### Main config file structure
 ```go
 type ConfigFileStruct struct {
 	Ethernet     []EthernetStruct
@@ -24,7 +24,7 @@ type ServicesStruct struct {
 	ExporterCp bool
 }
 ```
-### Interfaces structure
+>### Interfaces structure
 ```go
 type AbfPolicyStruct struct {
 	PolicyName   IfName
