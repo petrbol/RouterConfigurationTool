@@ -1,5 +1,5 @@
 >### topology
-
+![topology](../img/example_topology1.png)
 
 >### rconfig
 > configuration commands

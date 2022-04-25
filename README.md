@@ -44,7 +44,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 
 ### Documentation
 Topology [example1](docs/example_topology1.md)\
-Configurable examples can be found in [docs](docs)
+Configuration examples can be found in [docs](docs)
 
 ### rconfig quick example & show
 ![rconfig example](img/rconfigExample.png?raw=true)
