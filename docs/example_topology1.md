@@ -1,7 +1,7 @@
 >### topology
 > r02 rct+VPP
 
-![topology](../img/example_topology1.png)
+![topology](../img/example_topology1.png?raw=true)
 
 >### rconfig
 > configuration commands
