@@ -45,9 +45,9 @@ rconfig abf policy add custPolicy interface loopBr1Cust
 rconfig abf rule add custPolicy IsPermit 0 SrcPrefix 192.168.55.0/24 DstPrefix 10.10.15.0/24
 
 # enable services 
-rconfig service set Bird true
-rconfig service set ExporterCp true
-rconfig service set Sshd true
+rconfig service bird set enable true
+rconfig service exporterCp set enable true
+rconfig service sshd set enable true
 
 # commit and save
 rconfig commit

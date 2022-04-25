@@ -7,7 +7,7 @@ type ConfigFileStruct struct {
 	L2xConnect   []L2xConnectStruct
 	Vxlan        []VxlanStruct
 	Vpp          VppStruct
-	Services     ServicesStruct
+	Service      ServiceStruct
 }
 
 type VppStruct struct {
@@ -16,12 +16,15 @@ type VppStruct struct {
 	LogToFile bool
 }
 
-type ServicesStruct struct {
-	Bird       bool
-	Sshd       bool
-	Watchdog   bool
-	Exporter   bool
-	ExporterCp bool
+type ServiceStruct struct {
+	Bird       ServiceCfgStruct
+	Sshd       ServiceCfgStruct
+	Exporter   ServiceCfgStruct
+	ExporterCp ServiceCfgStruct
+}
+
+type ServiceCfgStruct struct {
+	Enable bool
 }
 ```
 >### Interfaces structure
