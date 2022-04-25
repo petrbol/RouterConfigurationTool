@@ -1,4 +1,5 @@
->### Bird2 configuration file example
+>### Bird2 configuration
+> bird,conf file example
 
 ```
 router id 1.1.1.1;
