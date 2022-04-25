@@ -1,4 +1,5 @@
 >### topology
+> > r02 => rct+VPP
 ![topology](../img/example_topology1.png)
 
 >### rconfig
