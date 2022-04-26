@@ -1,5 +1,5 @@
 >### topology
-> r02 rct+VPP
+> r01, r02 = rct+VPP
 
 ![topology](../img/example2_topology.png?raw=true)
 
