@@ -25,7 +25,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Use separated namespace `controlplane`
 - Custom interface name
 - IPv4/IPv6 a routing
-- Dot1q, QoQ
+- Dot1q, QinQ
 - VXLAN tunnels
 - ABF+ACL policy filtering
 - Loopbacks (BVI)
