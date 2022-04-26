@@ -43,7 +43,8 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 `rconfig save`
 
 ### Documentation
-Topology [example1](docs/example_topology1.md)\
+Topology [example1](docs/example1.md) (routing, vlan, loopback, bridge domain)\
+Topolofy [example2](docs/example2.md) (routing, loopback, vxlan, l2xconnect)\
 Configuration examples can be found in [docs](docs)
 
 ### rconfig quick example & show
@@ -78,8 +79,22 @@ Configuration examples can be found in [docs](docs)
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers and core 0 as main\
 `systemctl start rctStart` # if everything is ok, you can enable service after start bellow
-9. If `vppctl show interface` show your interfaces and you are still connected to the management port, you can enable rct on startup.`systemctl enable rctStart`
+9. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
+`systemctl enable rctStart`
 10. Enjoy `rconfig --help` 
 
 ### Remove
 `apt purge rct* -y && rm -rf /etc/rct && reboot`
+
+### Useful commands
+`rconfig save` # save running configuration to startup\
+`rconfig commit` # apply configuration, no save\
+`rconfig restore default` # restore configuration from default(created by `rconfig vpp setup`) to running without commit\
+`rconfig commit dpdk` # perform full vpp & controlplane restart\
+`birdc` # interactive bird debug cli\
+`birdc c` # reload bird configuration\
+`vppctl` # interactive vpp debug cli\
+`ip netns exec controlplane ping 1.2.3.4` # ping 1.2.3.4\
+`ip netns exec controlplane ip neighbor` #  show controlane neighbor\
+`ip netns exec controlplane ip route` # show controlane routes\
+`ip netns exec controlplane bash` # jump from management namespace to controlplane namespace (useful for debug)
