@@ -63,28 +63,29 @@ Configuration examples can be found in [docs](docs)
 
 ### Installation
 1. install Debian 11 
-2. modify /etc/default/grub to set isolcpu for VPP\
+2. modify `/etc/default/grub` to set isolcpu for VPP\
 ```GRUB_CMDLINE_LINUX="isolcpus=1,2,3"```
 3. install VPP depends\
 `apt install bird2 sed libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
-4. install VPP from prepaired .deb packages\
-`dpkg -i vpp*.deb`
+4. install VPP from prepaired .deb packages (select correct directory)\
+`cd vpp/22.06XXX/ && dpkg -i *.deb`
 5. update grub, disable VPP service and perform reboot before install rct .deb package\
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
 6. install rct package\
-`dpkg -i rct*.deb`
+`dpkg -i rctXXX.deb`
 7. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
 8. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers and core 0 as main\
+`rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2` # configure TX/RX interface queue\
 `systemctl start rctStart` # if everything is ok, you can enable service after start bellow
 9. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
 `systemctl enable rctStart`
 10. Enjoy `rconfig --help` 
 
 ### Remove
-`apt purge rct* -y && rm -rf /etc/rct && reboot`
+`apt purge rct -y && rm -rf /etc/rct && reboot`
 
 ### Useful commands
 `rconfig save` # save running configuration to startup\
