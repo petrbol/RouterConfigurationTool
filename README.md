@@ -79,11 +79,11 @@ Configuration examples can be found in [docs](docs)
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers and core 0 as main\
 `rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2` # configure TX/RX interface queue\
-`rconfig save` # save additional configuration before start\ 
-`systemctl start rctStart` # if everything is ok, you can enable service after start bellow
-9. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
+`rconfig save` # save additional configuration before start.
+9. `systemctl start rctStart`
+10. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
 `systemctl enable rctStart`
-10. Enjoy `rconfig --help` 
+11. Enjoy `rconfig --help` 
 
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
