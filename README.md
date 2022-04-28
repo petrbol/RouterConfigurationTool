@@ -82,6 +82,7 @@ Configuration examples can be found in [docs](docs)
 `systemctl start rctStart` # if everything is ok, you can enable service after start bellow
 9. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
 `systemctl enable rctStart`
+`rconfig save`
 10. Enjoy `rconfig --help` 
 
 ### Remove
