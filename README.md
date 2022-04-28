@@ -80,8 +80,8 @@ Configuration examples can be found in [docs](docs)
 `rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers and core 0 as main\
 `rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2` # configure TX/RX interface queue\
 `systemctl start rctStart` # if everything is ok, you can enable service after start bellow
-9. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
-`systemctl enable rctStart`
+9. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup and save previous post setup configuration.\
+`systemctl enable rctStart`\
 `rconfig save`
 10. Enjoy `rconfig --help` 
 
