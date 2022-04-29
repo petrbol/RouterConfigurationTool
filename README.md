@@ -99,4 +99,10 @@ Configuration examples can be found in [docs](docs)
 `ip netns exec controlplane ping 1.2.3.4` # ping 1.2.3.4\
 `ip netns exec controlplane ip neighbor` #  show controlane neighbor\
 `ip netns exec controlplane ip route` # show controlane routes\
-`ip netns exec controlplane bash` # jump from management namespace to controlplane namespace (useful for debug)
+`ip netns exec controlplane bash` # jump from management namespace to controlplane namespace (useful for debug)\
+`systemctl status rctBird`\
+`systemctl status rctExporter`\
+`systemctl status rctExporterCp`\
+`systemctl status rctSshd`\
+`systemctl status rctVpp`
+
