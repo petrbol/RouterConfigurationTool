@@ -22,7 +22,8 @@ rconfig vxlan set vxlan110 SrcAddress 10.254.100.1 DstAddress 10.254.100.2 Vni 1
 rconfig bridge l2xconnect add enp3s0Vxlan110
 rconfig bridge l2xconnect set enp3s0Vxlan110 PortA enp3s0 PortB vxlan110
 
-rconfig service bird set Enable true
+rconfig service bird set EnableOnControlPlane true 
+rconfig service sshd set EnableOnControlPlane true
 
 rconfig commit dpdk
 rconfig save

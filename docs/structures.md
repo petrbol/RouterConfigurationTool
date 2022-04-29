@@ -17,14 +17,21 @@ type VppStruct struct {
 }
 
 type ServiceStruct struct {
-	Bird       ServiceCfgStruct
-	Sshd       ServiceCfgStruct
-	Exporter   ServiceCfgStruct
-	ExporterCp ServiceCfgStruct
+	Bird     ServiceCfgStruct
+	Sshd     ServiceCfgStruct
+	Exporter ExporterCfgStruct
 }
 
 type ServiceCfgStruct struct {
-	Enable bool
+	EnableOnControlPlane bool
+}
+
+type ExporterCfgStruct struct {
+	EnableOnManagement   bool
+	EnableOnControlPlane bool
+	ListenOnAddr         net.IP
+	ListenOnPort         uint16
+	ExportInterfaceStats bool
 }
 ```
 >### Interfaces structure
