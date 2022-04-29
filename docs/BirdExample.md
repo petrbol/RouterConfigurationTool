@@ -17,6 +17,11 @@ protocol kernel kernel6 {
     scan time 300;
 }
 
+protocol static {
+    ipv4;
+    route 10.0.0.200/32 via 10.10.20.2;
+}
+
 protocol ospf v2 {
     ipv4 { import all; export where source != RTS_DEVICE; };
     area 0.0.0.0 {
