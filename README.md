@@ -59,7 +59,7 @@ Configuration examples can be found in [docs](docs)
 * VPP capable hardware
 * Multicore CPU (4 or more cores for better results)
 * Hardware with DPDK capable interface
-* Minimum 2 ethernet interface (one for VPP and one for management)
+* Minimum 2 ethernet interface (one for VPP and one for management). (note: You can also use the management port in vpp, but you lose management port accessibility.)
 
 ### Installation
 1. install Debian 11 
