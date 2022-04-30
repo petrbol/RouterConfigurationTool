@@ -53,8 +53,9 @@ rconfig vlan set vlan77 Dot1q 77 ExactMatch false Pop1 true
 ```
 ExacMatch false. Pop1 options strip vlan header for bridge with other interface/bvi.
 ***
-```
 ### vlan QinQ
+configure parent vlan + QinQ vlan 
+```
 rconfig vlan add vlan77 interface enp4s0
 rconfig vlan set vlan77 Dot1q 77
 rconfig vlan add vlanQinQ199 interface enp4s0
