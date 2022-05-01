@@ -41,7 +41,14 @@ type AbfPolicyStruct struct {
 	UserInstance uint32
 	Comment      Comment
 	IsIPv6       bool
+	Paths        []AbfCfgPath
 	Rules        []acl_types.ACLRule
+}
+
+type AbfCfgPath struct {
+	Weight       uint8
+	ViaAddress   ip_types.Address
+	ViaInterface IfName
 }
 
 // ethernet config struct
@@ -50,7 +57,6 @@ type EthernetStruct struct {
 	Cfg    EthernetCfgStruct
 	Vlan   []VlanStruct
 }
-
 type EthernetCfgStruct struct {
 	Comment         Comment
 	AdminUp         bool
@@ -68,7 +74,6 @@ type VlanStruct struct {
 	UserInstance uint32
 	Cfg          VlanCfgStruct
 }
-
 type VlanCfgStruct struct {
 	Comment    Comment
 	AdminUp    bool
@@ -86,7 +91,6 @@ type LoopbackStruct struct {
 	UserInstance uint32
 	Cfg          LooopbackCfgStruct
 }
-
 type LooopbackCfgStruct struct {
 	Comment    Comment
 	AdminUp    bool
@@ -103,7 +107,6 @@ type BridgeDomainStruct struct {
 	Cfg          BridgeDomainCfgStruct
 	Port         []BridgePortsCfgStruct
 }
-
 type BridgeDomainCfgStruct struct {
 	Comment Comment
 	Flood   bool
@@ -113,7 +116,6 @@ type BridgeDomainCfgStruct struct {
 	ArpTerm bool
 	ArpUfwd bool
 }
-
 type BridgePortsCfgStruct struct {
 	IfName   IfName
 	Comment  Comment
@@ -127,7 +129,6 @@ type VxlanStruct struct {
 	UserInstance uint32
 	Cfg          VxlanCfgStruct
 }
-
 type VxlanCfgStruct struct {
 	Comment    Comment
 	AdminUp    bool
