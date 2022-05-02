@@ -93,6 +93,7 @@ Configuration examples can be found in [docs](docs)
 `rconfig commit` # apply configuration, no save\
 `rconfig restore default` # restore configuration from default(created by `rconfig vpp setup`) to running without commit\
 `rconfig commit dpdk` # perform full vpp & controlplane restart\
+`rconfig address show`\
 `birdc` # interactive bird debug cli\
 `birdc c` # reload bird configuration\
 `vppctl` # interactive vpp debug cli\
@@ -105,4 +106,3 @@ Configuration examples can be found in [docs](docs)
 `systemctl status rctExporterCp`\
 `systemctl status rctSshd`\
 `systemctl status rctVpp`
-
