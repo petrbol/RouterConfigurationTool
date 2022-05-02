@@ -1,7 +1,6 @@
-## *** Work in progress, deb packages not uploaded at this moment ***
-### !!! not for production usage, use at your own risk !!!
-
 ## rct - Router Configuration Tool
+> #### * not for production usage. Use at your own risk. Early development stadium.
+
 Router Configuration Tool is simple configuration interface for Vector Path Processing (VPP, fd.io) with limited feature set. This tool is set of systemd services and few app.
 
 ### About

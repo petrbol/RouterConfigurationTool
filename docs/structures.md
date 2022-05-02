@@ -46,6 +46,7 @@ type AbfPolicyStruct struct {
 }
 
 type AbfCfgPath struct {
+	PathID       uint8
 	Weight       uint8
 	ViaAddress   ip_types.Address
 	ViaInterface IfName
