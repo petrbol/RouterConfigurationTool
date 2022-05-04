@@ -22,6 +22,11 @@ protocol static {
     route 10.0.0.200/32 via 10.10.20.2;
 }
 
+protocol static {
+    ipv6;
+    route 2a06:600::/64 via 2a06:500::2;
+}
+
 protocol ospf v2 {
     ipv4 { import all; export where source != RTS_DEVICE; };
     area 0.0.0.0 {
