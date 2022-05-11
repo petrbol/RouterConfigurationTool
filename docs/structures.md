@@ -11,9 +11,11 @@ type ConfigFileStruct struct {
 }
 
 type VppStruct struct {
-	MainCore  uint8
-	Workers   uint8
-	LogToFile bool
+	MainCore              uint8
+	Workers               uint8
+	LogToFile             bool
+	DefaultLogLevel       string
+	DefaultSyslogLogLevel string
 }
 
 type ServiceStruct struct {
@@ -31,7 +33,6 @@ type ExporterCfgStruct struct {
 	EnableOnControlPlane bool
 	ListenOnAddr         net.IP
 	ListenOnPort         uint16
-	ExportInterfaceStats bool
 }
 ```
 >### Interfaces structure

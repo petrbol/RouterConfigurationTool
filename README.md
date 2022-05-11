@@ -43,7 +43,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 
 ### Documentation
 Topology [example1](docs/example1.md) (routing, vlan, loopback, bridge domain, abf)\
-Topolofy [example2](docs/example2.md) (routing, loopback, vxlan, l2xconnect)\
+Topology [example2](docs/example2.md) (routing, loopback, vxlan, l2xconnect)\
 Configuration examples can be found in [docs](docs)
 
 ### rconfig quick example & show
@@ -86,6 +86,13 @@ Configuration examples can be found in [docs](docs)
 
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
+
+### How to upgrade
+note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` exist, service `rctStart` will be started and enabled after startup.
+1. download latest rct version
+2. dpkg -i rct-xxxx.deb
+3. reload bash completion file (or logout & login to make bash-completion work again)\
+`. /etc/profile.d/rconfig.sh`
 
 ### Useful commands
 `rconfig save` # save running configuration to startup\
