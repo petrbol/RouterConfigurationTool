@@ -10,6 +10,7 @@
 - fix: lcp create pair commit message
 - fix: improve commit messages
 - fix: automatic start & enable service rctStart after upgrade
+- fix: "ssh_exchange_identification: read: Connection reset by peer" after rctSshd stop
 - info: rctExporter removed ExportInterfaceStats option
 
 #### rct_0.2-0_amd64
