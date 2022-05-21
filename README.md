@@ -63,7 +63,7 @@ Configuration examples can be found in [docs](docs)
 ### Installation
 1. install Debian 11 
 2. modify `/etc/default/grub` to set isolcpu for VPP\
-```GRUB_CMDLINE_LINUX="isolcpus=1,2,3"```
+```GRUB_CMDLINE_LINUX="isolcpus=1-3 nohz_full=1-3"```
 3. install VPP depends\
 `apt install bird2 sed libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
 4. install VPP from prepaired .deb packages (select correct directory)\
@@ -76,7 +76,7 @@ Configuration examples can be found in [docs](docs)
 `. /etc/profile.d/rconfig.sh`
 8. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
-`rconfig vpp set MainCore 0 Workers 3` # configure VPP to use 3 cpu cores for workers and core 0 as main\
+`rconfig vpp set MainCore 1 Workers 2` # configure VPP to use 3 cpu cores for workers and core 0 as main\
 `rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2` # configure TX/RX interface queue\
 `rconfig save -f` # save additional configuration before start.
 9. `systemctl start rctStart` # if configuration file exist, rct will start automatically
