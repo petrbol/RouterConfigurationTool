@@ -66,7 +66,7 @@ Configuration examples can be found in [docs](docs)
 ```GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3"```
 3. install VPP depends\
 `apt install bird2 sed curl sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
-4. install VPP from `https://packagecloud.io/fdio/master` page\
+4. add VPP master `https://packagecloud.io/fdio/master` repository\
 `curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | sudo bash`
 5. install packages\
 `apt install vpp vpp-plugin-core vpp-plugin-dpdk`
