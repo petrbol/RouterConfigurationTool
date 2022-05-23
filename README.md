@@ -63,26 +63,28 @@ Configuration examples can be found in [docs](docs)
 ### Installation
 1. install Debian 11 
 2. modify `/etc/default/grub` to set isolcpu for VPP\
-```GRUB_CMDLINE_LINUX="isolcpus=1-3 nohz_full=1-3"```
+```GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3"```
 3. install VPP depends\
-`apt install bird2 sed libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
-4. install VPP from prepaired .deb packages (select correct directory)\
-`cd vpp/22.06XXX/ && dpkg -i *.deb`
-5. update grub, disable VPP service and perform reboot before install rct .deb package\
+`apt install bird2 sed curl sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
+4. install VPP from `https://packagecloud.io/fdio/master` page\
+`curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | sudo bash`
+5. install packages\
+`apt install vpp vpp-plugin-core vpp-plugin-dpdk`
+6. update grub, disable VPP service and perform reboot before install rct .deb package\
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
-6. install rct package\
+7. install rct package\
 `dpkg -i rctXXX.deb`
-7. reload bash completion file (or logout & login to make bash-completion work again)\
+8. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
-8. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
+9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 1 Workers 2` # configure VPP to use 3 cpu cores for workers and core 0 as main\
 `rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2` # configure TX/RX interface queue\
 `rconfig save -f` # save additional configuration before start.
-9. `systemctl start rctStart` # if configuration file exist, rct will start automatically
-10. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
+10. `systemctl start rctStart` # if configuration file exist, rct will start automatically
+11. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
 `systemctl enable rctStart`
-11. Enjoy `rconfig --help` 
+12. Enjoy `rconfig --help` 
 
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
