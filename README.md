@@ -65,15 +65,16 @@ Configuration examples can be found in [docs](docs)
 2. modify `/etc/default/grub` to set isolcpu for VPP\
 ```GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3"```
 3. install VPP depends\
-`apt install bird2 sed curl sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
+`apt install bird2 htop sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
 4. add VPP master `https://packagecloud.io/fdio/master` repository\
 `curl -s https://packagecloud.io/install/repositories/fdio/master/script.deb.sh | sudo bash`
 5. install packages\
 `apt install vpp vpp-plugin-core vpp-plugin-dpdk`
 6. update grub, disable VPP service and perform reboot before install rct .deb package\
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
-7. install rct package\
-`dpkg -i rctXXX.deb`
+7. install Router Configuration Tool\
+`wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-1_amd64.deb` # download latest rct package\
+`dpkg -i rctXXX.deb` # install package
 8. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
 9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
