@@ -115,3 +115,6 @@ note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` e
 `systemctl status rctExporterCp`\
 `systemctl status rctSshd`\
 `systemctl status rctVpp`
+
+### Known issues
+- jitter issue (about 6-10ms) can be observed on the PC Engines APU2/4 board with Debian 11 + original kernel. Custom kernel with ubuntu kernel .config fix this issue.
