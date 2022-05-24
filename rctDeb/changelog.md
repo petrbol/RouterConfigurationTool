@@ -1,3 +1,6 @@
+#### rct_0.2-2_amd64
+- new: rctExporter add current physical interface rate   
+
 #### rct_0.2-1_amd64
 - new: rctExporter export node_vpp_vector_rate per vector (vector=255 => max cpu usage)
 - new: node_vpp_vector_rate => CPU graph grafana template
