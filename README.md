@@ -70,12 +70,12 @@ Configuration examples can be found in [docs](docs)
 `curl -s https://packagecloud.io/install/repositories/fdio/2206/script.deb.sh | sudo bash`
 5. install packages\
 `apt install vpp vpp-plugin-core vpp-plugin-dpdk -y`
-6. update grub, disable VPP service and perform reboot before install rct .deb package\
-`update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
-6.(a) install alternative kernel for PC Engines APU board\
+6.(a) install alternative kernel for PC Engines APU board only\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb` # download kernel headers\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb` # download kernel image\
-`dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb -y`
+`dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb -y` # install kernel\
+6. update grub, disable VPP service and perform reboot before install rct .deb package\
+`update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
 7. install Router Configuration Tool\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-1_amd64.deb` # download latest rct package\
 `dpkg -i rctXXX.deb` # install package
