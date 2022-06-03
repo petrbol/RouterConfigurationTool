@@ -73,7 +73,7 @@ Configuration examples can be found in [docs](docs)
 6. install alternative kernel for PC Engines APU board only\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb` # download kernel headers\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb` # download kernel image\
-`dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb -y` # install kernel
+`dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb` # install kernel
 7. update grub, disable VPP service and perform reboot before install rct .deb package\
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
 8. install Router Configuration Tool\
