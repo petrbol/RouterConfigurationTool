@@ -84,7 +84,6 @@ Configuration examples can be found in [docs](docs)
 10. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 1 Workers 2` # configure VPP to use 3 cpu cores for workers and core 0 as main\
-`rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2` # configure TX/RX interface queue\
 `rconfig save -f` # save additional configuration before start.
 11. `systemctl start rctStart` # if configuration file exist, rct will start automatically
 12. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
