@@ -70,26 +70,26 @@ Configuration examples can be found in [docs](docs)
 `curl -s https://packagecloud.io/install/repositories/fdio/2206/script.deb.sh | sudo bash`
 5. install packages\
 `apt install vpp vpp-plugin-core vpp-plugin-dpdk -y`
-6.(a) install alternative kernel for PC Engines APU board only\
+6. install alternative kernel for PC Engines APU board only\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb` # download kernel headers\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb` # download kernel image\
-`dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb -y` # install kernel\
-6. update grub, disable VPP service and perform reboot before install rct .deb package\
+`dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb -y` # install kernel
+7. update grub, disable VPP service and perform reboot before install rct .deb package\
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
-7. install Router Configuration Tool\
+8. install Router Configuration Tool\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-1_amd64.deb` # download latest rct package\
 `dpkg -i rctXXX.deb` # install package
-8. reload bash completion file (or logout & login to make bash-completion work again)\
+9. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
-9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
+10. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 1 Workers 2` # configure VPP to use 3 cpu cores for workers and core 0 as main\
 `rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2` # configure TX/RX interface queue\
 `rconfig save -f` # save additional configuration before start.
-10. `systemctl start rctStart` # if configuration file exist, rct will start automatically
-11. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
+11. `systemctl start rctStart` # if configuration file exist, rct will start automatically
+12. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
 `systemctl enable rctStart`
-12. Enjoy `rconfig --help` 
+13. Enjoy `rconfig --help` 
 
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
