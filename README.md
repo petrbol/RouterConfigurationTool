@@ -78,7 +78,7 @@ Configuration examples can be found in [docs](docs)
 `update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
 8. install Router Configuration Tool\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-1_amd64.deb` # download latest rct package\
-`dpkg -i rctXXX.deb` # install package
+`dpkg -i rct_0.2-1_amd64.deb` # install package
 9. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
 10. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
