@@ -44,7 +44,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 ### Documentation
 Topology [example1](docs/example1.md) (routing, vlan, loopback, bridge domain, abf)\
 Topology [example2](docs/example2.md) (routing, loopback, vxlan, l2xconnect)\
-Configuration examples can be found in [docs](docs)
+Configuration and installation examples can be found in [docs](docs)
 
 ### rconfig quick example & show
 ![rconfig example](img/rconfigExample.png?raw=true)
