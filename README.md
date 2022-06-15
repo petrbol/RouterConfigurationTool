@@ -15,7 +15,10 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
   -`rctSshd` # use default sshd conf file location  \
   -`rctWatchdog`\
   -`rctVpp`\
-  -`rctStart`
+  -`rctStart`\
+  -`rctKea4`\
+  -`rctKea6`\
+  -`rctKeaWatchdog`
 - default directory `/etc/rct`, json configuration files
  
 ### Key features
@@ -33,6 +36,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Exporter for interface statistics based on Prometheus(prometheus.io) with customized interface names, grafana template included
 - Watchdog
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
+- Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog`
 
 ### Configuration example
 `rconfig vlan add vlan77 interface enp3s0`# add vlan subinterface\

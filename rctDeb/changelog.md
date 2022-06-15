@@ -2,7 +2,7 @@
 - new: rctExporter add current physical interface rate   
 - new: add static route configuration
 - new: add simple source nat integration 
-- new: add kea4/6 dhcpd preconfigured systemd service rctKea4 and rctKea6
+- new: add kea4/6 dhcpd preconfigured systemd service rctKea4 and rctKea6 (+rctKeaWatchdog)
 
 #### rct_0.2-1_amd64
 - new: rctExporter export node_vpp_vector_rate per vector (vector=255 => max cpu usage)
