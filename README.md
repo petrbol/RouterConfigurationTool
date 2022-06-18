@@ -93,7 +93,7 @@ Configuration and installation examples can be found in [docs](docs)
 12. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
 `systemctl enable rctStart`
 13. Enjoy `rconfig --help` 
-#### * quick installation script for APU4 + Debian 11, not recommended (use manual installation steps 1-11) 
+#### * quick installation script for APU4 + Debian 11, not recommended (use manual installation steps 1-13) 
 `apt install curl -y && curl -s https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall1.sh | bash` # executing will funish with reboot, after reboot continous to next step\
 `curl -s https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall2.sh | bash`
 
