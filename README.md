@@ -94,8 +94,13 @@ Configuration and installation examples can be found in [docs](docs)
 `systemctl enable rctStart`
 13. Enjoy `rconfig --help` 
 #### * quick installation script for APU4 + Debian 11, not recommended (use manual installation steps 1-13) 
-1. `apt install curl -y && curl -s https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall1.sh | bash` # executing will funish with reboot, after reboot continous to next step\
-2. `curl -s https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall2.sh | bash`
+1. `apt install wget && wget https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/`quickInstall1.sh && bash quickInstall1.sh` # executing will funish with reboot, after reboot continous to next step\
+2. `wget https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall2.sh && bash quickInstall2.sh`
+3. rconfig vpp setup
+   rconfig vpp set MainCore 1 Workers 2 && \
+   rconfig save -f && \
+   systemctl enable rctStart && \
+   systemctl start rctStart
 
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
