@@ -94,8 +94,8 @@ Configuration and installation examples can be found in [docs](docs)
 `systemctl enable rctStart`
 13. Enjoy `rconfig --help` 
 #### * quick installation script for APU4 + Debian 11, not recommended (use manual installation steps 1-11) 
-`apt install curl -y && curl -s | bash` # executing will funish with reboot, after reboot continous to next step\
-`curl -s | bash`
+`apt install curl -y && curl -s https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall1.sh | bash` # executing will funish with reboot, after reboot continous to next step\
+`curl -s https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall2.sh | bash`
 
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
