@@ -69,7 +69,7 @@ Configuration and installation examples can be found in [docs](docs)
 2. modify `/etc/default/grub` to set isolcpu for VPP\
 ```GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance"```
 3. install VPP depends\
-`apt install bird2 htop sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
+`apt install bird2 htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
 4. add VPP master `https://packagecloud.io/fdio/2206` repository\
 `curl -s https://packagecloud.io/install/repositories/fdio/2206/script.deb.sh | sudo bash`
 5. install packages\
@@ -113,12 +113,13 @@ note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` e
 `rconfig restore default` # restore configuration from default(created by `rconfig vpp setup`) to running without commit\
 `rconfig commit dpdk` # perform full vpp & controlplane restart\
 `rconfig address show`\
+`rctping` # ping command alias, executed in controlplane\
+`rctip` # ip command alias, executed in controlplane\
+`rctssh` # ssh command alias, executed in controlplane\
+`rcttraceroute` # traceroute command alias, executed in controlplane\
 `birdc` # interactive bird debug cli\
 `birdc c` # reload bird configuration\
 `vppctl` # interactive vpp debug cli\
-`ip netns exec controlplane ping 1.2.3.4` # ping 1.2.3.4\
-`ip netns exec controlplane ip neighbor` #  show controlane neighbor\
-`ip netns exec controlplane ip route` # show controlane routes\
 `ip netns exec controlplane bash` # jump from management namespace to controlplane namespace (useful for debug)\
 `systemctl status rctBird`\
 `systemctl status rctExporter`\
