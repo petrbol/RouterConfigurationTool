@@ -37,6 +37,8 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Watchdog
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
 - Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog`
+- Static ipv4/ipv6 routes (netlink to controlplane)
+- Simple source nat on output interface (nat44 + output feature)
 
 ### Configuration example
 `rconfig vlan add vlan77 interface enp3s0`# add vlan subinterface\
@@ -113,10 +115,10 @@ note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` e
 `rconfig restore default` # restore configuration from default(created by `rconfig vpp setup`) to running without commit\
 `rconfig commit dpdk` # perform full vpp & controlplane restart\
 `rconfig address show`\
-`rctping` # ping command alias, executed in controlplane\
-`rctip` # ip command alias, executed in controlplane\
-`rctssh` # ssh command alias, executed in controlplane\
-`rcttraceroute` # traceroute command alias, executed in controlplane\
+`pingc` # ping command alias, executed in controlplane\
+`ipc` # ip command alias, executed in controlplane\
+`sshc` # ssh command alias, executed in controlplane\
+`traceroutec` # traceroute command alias, executed in controlplane\
 `birdc` # interactive bird debug cli\
 `birdc c` # reload bird configuration\
 `vppctl` # interactive vpp debug cli\

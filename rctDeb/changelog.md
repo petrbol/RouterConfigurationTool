@@ -1,9 +1,11 @@
 #### rct_0.2-2_amd64
 - new: rctExporter add current physical interface rate   
-- new: add static route configuration
-- new: add simple source nat integration 
-- new: add kea4/6 dhcpd server preconfigured systemd service rctKea4 and rctKea6 (+rctKeaWatchdog)
-- new: add multiple aliases to run command in specific namespace (ping-rctping, ip-rctip, ssh-rctssh, traceroute-rcttraceroute)
+- new: static route configuration
+- new: simple source nat integration 
+- new: kea4/6 dhcpd server preconfigured systemd service rctKea4 and rctKea6 (+rctKeaWatchdog)
+- new: multiple aliases to run command in specific namespace (ping-pingc, ip-ipc, ssh-sshc, traceroute-traceroutec)
+- new: simple source nat (nat44 output-feature on output interface)
+- new: dhcp4 client (ethernet+vlan)
 - fix: configuration is not full at the first commit
 
 #### rct_0.2-1_amd64
