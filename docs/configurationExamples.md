@@ -91,3 +91,8 @@ MapLocal = enable access from internet to wan Address
 rconfig nat44 set enp2s0 OutputFeature true Address 192.168.44.199 MapLocal true
 rconfig nat44 set enp2s0 OutputFeature false
 ```
+***
+### dhcp4 client
+`
+rconfig ethernet set enp2s0 Dhcp4client true
+`

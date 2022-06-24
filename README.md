@@ -39,6 +39,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog`
 - Static ipv4/ipv6 routes (netlink to controlplane)
 - Simple source nat on output interface (nat44 + output feature)
+- Dhcp4 client (ethernet, vlan)
 
 ### Configuration example
 `rconfig vlan add vlan77 interface enp3s0`# add vlan subinterface\
@@ -90,13 +91,14 @@ Configuration and installation examples can be found in [docs](docs)
 10. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
 `rconfig vpp setup` # start setup\
 `rconfig vpp set MainCore 1 Workers 2` # configure VPP to use 3 cpu cores for workers and core 0 as main\
-`rconfig save -f` # save additional configuration before start.
+`rconfig save -f` # save additional configuration before start\
+`rconfig save default` # save configuration file as default cfg (`rconfig restore default`)
 11. `systemctl start rctStart` # if configuration file exist, rct will start automatically
 12. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
 `systemctl enable rctStart`
 13. Enjoy `rconfig --help` 
-#### * quick installation script for APU4 + Debian 11, not recommended (use manual installation steps 1-13) 
-1. `apt install wget && wget https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/`quickInstall1.sh && bash quickInstall1.sh` # executing will finish with reboot, after reboot continuous to next step\
+#### * quick installation script for APU4 + Debian 11, log as root (su - ),not recommended (use manual installation steps 1-13) 
+1. `apt install wget -y && wget https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall1.sh && bash quickInstall1.sh` # executing will finish with reboot, after reboot continuous to next step\
 2. `wget https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall2.sh && bash quickInstall2.sh`
 
 ### Remove
