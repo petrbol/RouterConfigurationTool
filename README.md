@@ -106,8 +106,8 @@ Configuration and installation examples can be found in [docs](docs)
 
 ### How to upgrade
 note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` exist, service `rctStart` will be started and enabled after startup.
-1. download latest rct version
-2. dpkg -i rct-xxxx.deb
+1. download latest rct version `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-2_amd64.deb`
+2. install `dpkg -i rct_0.2-2_amd64.deb`
 3. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
 
