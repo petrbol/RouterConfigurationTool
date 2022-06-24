@@ -6,6 +6,7 @@ type ConfigFileStruct struct {
 	BridgeDomain []BridgeDomainStruct
 	L2xConnect   []L2xConnectStruct
 	Vxlan        []VxlanStruct
+	Route        []RouteStruct
 	Vpp          VppStruct
 	Service      ServiceStruct
 }
@@ -22,6 +23,8 @@ type ServiceStruct struct {
 	Bird     ServiceCfgStruct
 	Sshd     ServiceCfgStruct
 	Exporter ExporterCfgStruct
+	Kea4     ServiceCfgStruct
+	Kea6     ServiceCfgStruct
 }
 
 type ServiceCfgStruct struct {
@@ -34,9 +37,36 @@ type ExporterCfgStruct struct {
 	ListenOnAddr         net.IP
 	ListenOnPort         uint16
 }
+
+type RouteStruct struct {
+	UserInstance uint32
+	Comment      Comment
+	Cfg          RouteCfgStruct
+}
+
+type RouteCfgStruct struct {
+	Destination string
+	Gateway     string
+}
+
 ```
 >### Interfaces structure
 ```go
+package cfgStructures
+
+import (
+	"git.fd.io/govpp.git/binapi/acl_types"
+	"git.fd.io/govpp.git/binapi/ethernet_types"
+	"git.fd.io/govpp.git/binapi/ip_types"
+	"git.fd.io/govpp.git/binapi/l2"
+)
+
+type Nat44Struct struct {
+	OutputFeature bool
+	Address       ip_types.IP4Address
+	StaticMap     bool
+}
+
 type AbfPolicyStruct struct {
 	PolicyName   IfName
 	UserInstance uint32
@@ -63,7 +93,9 @@ type EthernetCfgStruct struct {
 	Comment         Comment
 	AdminUp         bool
 	Address         []ip_types.AddressWithPrefix
+	Dhcp4client     bool
 	Policy          []AbfPolicyStruct
+	Nat44           Nat44Struct
 	DpdkPciDeviceId PciDeviceId
 	DpdkRxQueues    uint8
 	DpdkTxQueues    uint8
@@ -77,14 +109,16 @@ type VlanStruct struct {
 	Cfg          VlanCfgStruct
 }
 type VlanCfgStruct struct {
-	Comment    Comment
-	AdminUp    bool
-	Address    []ip_types.AddressWithPrefix
-	Policy     []AbfPolicyStruct
-	Dot1q      Dot1q
-	InnerDot1q Dot1q
-	ExactMatch bool
-	Pop1       bool
+	Comment     Comment
+	AdminUp     bool
+	Address     []ip_types.AddressWithPrefix
+	Dhcp4client bool
+	Policy      []AbfPolicyStruct
+	Nat44       Nat44Struct
+	Dot1q       Dot1q
+	InnerDot1q  Dot1q
+	ExactMatch  bool
+	Pop1        bool
 }
 
 // loopback structures
@@ -94,12 +128,14 @@ type LoopbackStruct struct {
 	Cfg          LooopbackCfgStruct
 }
 type LooopbackCfgStruct struct {
-	Comment    Comment
-	AdminUp    bool
-	Address    []ip_types.AddressWithPrefix
-	Policy     []AbfPolicyStruct
-	MacAddress ethernet_types.MacAddress
-	Mtu        uint32
+	Comment     Comment
+	AdminUp     bool
+	Address     []ip_types.AddressWithPrefix
+	Dhcp4client bool
+	Policy      []AbfPolicyStruct
+	Nat44       Nat44Struct
+	MacAddress  ethernet_types.MacAddress
+	Mtu         uint32
 }
 
 // bridge structures
@@ -152,4 +188,5 @@ type L2xConnectCfgStruct struct {
 	PortA   IfName
 	PortB   IfName
 }
+
 ```
