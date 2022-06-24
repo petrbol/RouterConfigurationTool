@@ -1,12 +1,15 @@
 #### rct_0.2-2_amd64
-- new: rctExporter add current physical interface rate   
+- new: rctExporter add current physical interface rate
 - new: static route configuration
-- new: simple source nat integration 
-- new: kea4/6 dhcpd server preconfigured systemd service rctKea4 and rctKea6 (+rctKeaWatchdog)
-- new: multiple aliases to run command in specific namespace (ping-pingc, ip-ipc, ssh-sshc, traceroute-traceroutec)
-- new: simple source nat (nat44 output-feature on output interface)
-- new: dhcp4 client (ethernet+vlan)
+- new: kea4/6 dhcpd server preconfigured systemd service rctKea4 and rctKea6 (+rctKeaWatchdog to fix start on not running interface)
+- new: add multiple aliases to run command in specific namespace (ping=>pingc, ip=>ipc, ssh=>sshc, traceroute=>traceroutec)
+- new: simple source nat (nat44 output-feature on output interface: ethernet, vlan, loopback-bvi)
+- new: dhcp4 client (ethernet, vlan, loopback-bvi)
+- new: add command `rconfig save default`
+- new: change command `rconfig bridge l2xconnect` => `rconfig l2xconnect`
+- fix: updated grafana dashboard 
 - fix: configuration is not full at the first commit
+- known issue: dhcp client default route is not propagated to the controlplane, works in dataplane (will be fixed soon) 
 
 #### rct_0.2-1_amd64
 - new: rctExporter export node_vpp_vector_rate per vector (vector=255 => max cpu usage)
