@@ -9,7 +9,7 @@
 - new: change command `rconfig bridge l2xconnect` => `rconfig l2xconnect`
 - fix: updated grafana dashboard 
 - fix: configuration is not full at the first commit
-- known issue: dhcp client default route is not propagated to the controlplane, works in dataplane (will be fixed soon) 
+- known issue: dhcp client default route is not propagated to the controlplane, works in dataplane (will be fixed in next release) 
 
 #### rct_0.2-1_amd64
 - new: rctExporter export node_vpp_vector_rate per vector (vector=255 => max cpu usage)
