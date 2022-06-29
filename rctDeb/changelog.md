@@ -1,3 +1,8 @@
+#### rct_0.2-3_amd64
+- fix: controlplane not have default route from dhcp
+- fix: check for commit done before `rconfig save default` 
+- new: add command `rconfig show default`
+
 #### rct_0.2-2_amd64
 - new: rctExporter add current physical interface rate
 - new: static route configuration

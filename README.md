@@ -73,8 +73,8 @@ Configuration and installation examples can be found in [docs](docs)
 ```GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance"```
 3. install VPP depends\
 `apt install bird2 htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
-4. add VPP master `https://packagecloud.io/fdio/2206` repository\
-`curl -s https://packagecloud.io/install/repositories/fdio/2206/script.deb.sh | sudo bash`
+4. add VPP release `https://packagecloud.io/fdio/release` repository\
+`curl -s https://packagecloud.io/install/repositories/fdio/release/script.deb.sh | sudo bash`
 5. install packages\
 `apt install vpp vpp-plugin-core vpp-plugin-dpdk -y`
 6. install alternative kernel for PC Engines APU board only\
