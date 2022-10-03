@@ -7,13 +7,14 @@
 > configuration commands
 ```
 # additional ethernet configuration 
-rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2
-rconfig ethernet set enp4s0 DpdkRxQueues 2 DpdkTxQueues 2
+rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2 AdminUp true
+rconfig ethernet set enp4s0 DpdkRxQueues 2 DpdkTxQueues 2 AdminUp true
 
 rconfig address add 10.10.15.51/24 interface enp2s0 
 
 # loopback BVI for domain Br1Cust
 rconfig loopback add loopBr1Cust
+rconfig loopback set loopBr1Cust AdminUp true
 rconfig address add 192.168.55.100/24 interface loopBr1Cust
 
 # vlan declaration - L3 interface
@@ -25,9 +26,9 @@ rconfig address add 10.254.0.1/28 interface vlan2600
 rconfig vlan add vlan2601 interface enp4s0 
 rconfig vlan add vlan2602 interface enp4s0 
 rconfig vlan add vlan2603 interface enp4s0 
-rconfig vlan set vlan2601 Dot1q 2601 Pop1 true 
-rconfig vlan set vlan2602 Dot1q 2602 Pop1 true 
-rconfig vlan set vlan2603 Dot1q 2603 Pop1 true
+rconfig vlan set vlan2601 Dot1q 2601 Pop1 true AdminUp true
+rconfig vlan set vlan2602 Dot1q 2602 Pop1 true AdminUp true
+rconfig vlan set vlan2603 Dot1q 2603 Pop1 true AdminUp true
 
 # bridge domain
 rconfig bridge domain add Br1Cust

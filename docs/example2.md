@@ -7,17 +7,18 @@
 > configuration commands
 ```
 rconfig vpp set MainCore 0 Workers 3
-rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2
-rconfig ethernet set enp3s0 DpdkRxQueues 2 DpdkTxQueues 2
-rconfig ethernet set enp4s0 DpdkRxQueues 2 DpdkTxQueues 2
+rconfig ethernet set enp2s0 DpdkRxQueues 2 DpdkTxQueues 2 AdminUp true
+rconfig ethernet set enp3s0 DpdkRxQueues 2 DpdkTxQueues 2 AdminUp true
+rconfig ethernet set enp4s0 DpdkRxQueues 2 DpdkTxQueues 2 AdminUp true
 
 rconfig address add 10.10.19.1/24 interface enp2s0
 
 rconfig loopback add loop1Vxlan
+rconfig loopback set loop1Vxlan AdminUp true
 rconfig address add 10.254.100.1/32 interface loop1Vxlan
 
 rconfig vxlan add vxlan110
-rconfig vxlan set vxlan110 SrcAddress 10.254.100.1 DstAddress 10.254.100.2 Vni 110
+rconfig vxlan set vxlan110 SrcAddress 10.254.100.1 DstAddress 10.254.100.2 Vni 110 AdminUp true
 
 rconfig l2xconnect add enp3s0Vxlan110
 rconfig l2xconnect set enp3s0Vxlan110 PortA enp3s0 PortB vxlan110

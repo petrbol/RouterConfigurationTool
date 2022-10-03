@@ -21,7 +21,7 @@ rconfig save # after succesfull commit
 ### manual ethernet interface add
 ```
 rconfig ethernet add eth7
-rconfig ethernet set eth7 DpdkPciDeviceId 0000:04:00.0 DpdkRxQueues 1 DpdkTxQueues 1
+rconfig ethernet set eth7 DpdkPciDeviceId 0000:04:00.0 DpdkRxQueues 1 DpdkTxQueues 1 AdminUp true
 ```
 ***
 ### ip address example
@@ -33,6 +33,7 @@ rconfig address add 2a01:100::1/64 interface enp3s0
 ### loopback
 ```
 rconfig loopback add loopBr1BVI
+rconfig loopback set loopBr1BVI AdminUp true
 ```
 Add loopback name "loopBr1BVI".
 ***
@@ -40,7 +41,7 @@ Add loopback name "loopBr1BVI".
 L3 routing vlan, not bridge member.
 ```
 rconfig vlan add vlan77 interface enp4s0
-rconfig vlan set vlan77 Dot1q 77 ExactMatch true
+rconfig vlan set vlan77 Dot1q 77 ExactMatch true AdminUp true
 rconfig address add 192.168.15.1/24 interface vlan77
 ```
 ExacMatch true for L3.
@@ -49,7 +50,7 @@ ExacMatch true for L3.
 L3 routing vlan, not bridge member.
 ```
 rconfig vlan add vlan77 interface enp4s0
-rconfig vlan set vlan77 Dot1q 77 ExactMatch false Pop1 true
+rconfig vlan set vlan77 Dot1q 77 ExactMatch false Pop1 true AdminUp true
 ```
 ExacMatch false. Pop1 options strip vlan header for bridge with other interface/bvi.
 ***
@@ -57,9 +58,9 @@ ExacMatch false. Pop1 options strip vlan header for bridge with other interface/
 configure parent vlan + QinQ vlan 
 ```
 rconfig vlan add vlan77 interface enp4s0
-rconfig vlan set vlan77 Dot1q 77
+rconfig vlan set vlan77 Dot1q 77  AdminUp true
 rconfig vlan add vlanQinQ199 interface enp4s0
-rconfig vlan set vlanQinQ199 Dot1q 77 InnerDot1q 199 ExactMatch true
+rconfig vlan set vlanQinQ199 Dot1q 77 InnerDot1q 199 ExactMatch true AdminUp true
 ```
 Master interface (vlan with tag 77) must be declared to add QinQ vlan 199.
 ***
@@ -93,6 +94,15 @@ rconfig nat44 set enp2s0 OutputFeature false
 ```
 ***
 ### dhcp4 client
-`
+```
 rconfig ethernet set enp2s0 Dhcp4client true
-`
+```
+***
+### snmpd
+```
+rconfig service snmpd set EnableOnControlPlane true
+rconfig commit
+rconfig save
+# edit `/etc/snmp/snmpd.conf` to set listen ip address
+systemctl restart rctSnmpd.service
+```

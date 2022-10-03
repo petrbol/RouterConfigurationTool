@@ -25,6 +25,7 @@ type ServiceStruct struct {
 	Exporter ExporterCfgStruct
 	Kea4     ServiceCfgStruct
 	Kea6     ServiceCfgStruct
+    Snmpd    ServiceCfgStruct
 }
 
 type ServiceCfgStruct struct {

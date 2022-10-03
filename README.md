@@ -18,7 +18,8 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
   -`rctStart`\
   -`rctKea4`\
   -`rctKea6`\
-  -`rctKeaWatchdog`
+  -`rctKeaWatchdog`\
+  -`rctSnmpd`
 - default directory `/etc/rct`, json configuration files
  
 ### Key features
@@ -40,10 +41,11 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Static ipv4/ipv6 routes (netlink to controlplane)
 - Simple source nat on output interface (nat44 + output feature)
 - Dhcp4 client (ethernet, vlan)
+- Preconfigured systemd services for snmpd (on controlplane)
 
 ### Configuration example
 `rconfig vlan add vlan77 interface enp3s0`# add vlan subinterface\
-`rconfig vlan set vlan77 Dot1q 15 ExactMatch true`# set Dot1q main tag\
+`rconfig vlan set vlan77 Dot1q 15 ExactMatch true AdminUp true`# set Dot1q main tag\
 `rconfig address add 192.168.15.1/24 interface vlan77`# configure address\
 `rconfig commit`# perform diff commit\
 `rconfig save`
@@ -72,12 +74,12 @@ Configuration and installation examples can be found in [docs](docs)
 2. modify `/etc/default/grub` to set isolcpu for VPP\
 ```GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off"```
 3. install VPP depends\
-`apt install bird2 htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
+`apt install bird2 snmpd htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
 4. add VPP release `https://packagecloud.io/fdio/release` repository\
 `curl -s https://packagecloud.io/install/repositories/fdio/release/script.deb.sh | sudo bash`
 5. install packages\
 `apt install vpp vpp-plugin-core vpp-plugin-dpdk -y`
-6. install alternative kernel for PC Engines APU board only\
+6. ! OUTDATED: install alternative kernel for PC Engines APU board only\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb` # download kernel headers\
 `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb` # download kernel image\
 `dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb` # install kernel
@@ -105,6 +107,7 @@ Configuration and installation examples can be found in [docs](docs)
 `apt purge rct -y && rm -rf /etc/rct && reboot`
 
 ### How to upgrade
+note: !!! install all actual dependents from upper section - point 3. !!!
 note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` exist, service `rctStart` will be started and enabled after startup.
 1. download latest rct version `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-2_amd64.deb`
 2. install `dpkg -i rct_0.2-2_amd64.deb`
@@ -133,3 +136,4 @@ note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` e
 
 ### Known issues
 - jitter issue (about 6-10ms) can be observed on the PC Engines APU2/4 board with Debian 11 + original kernel. Custom kernel with ubuntu kernel .config fix this issue.
+- Intel X552 sfp+ port without inserted optical module and `AdminUp true` cause `rconfig commit dpdk` failure (no issue for `AdminUp false` or with inserted optical module)

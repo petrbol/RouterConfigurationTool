@@ -1,7 +1,9 @@
 #### rct_0.2-3_amd64
-- fix: controlplane not have default route from dhcp
+- know issue: controlplane does not have default route from dhcp client
 - fix: check for commit done before `rconfig save default` 
 - new: add command `rconfig show default`
+- new: SNMP - add systemd rctSnmpd service, command`rconfig service snmpd set EnableOnControlPlane true`, use`/etc/snmp/snmpd.conf`cfg file, install first`apt isntall snmpd -y`
+- fix: change default add interface default AdminUp value to `false`
 
 #### rct_0.2-2_amd64
 - new: rctExporter add current physical interface rate
