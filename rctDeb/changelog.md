@@ -4,6 +4,8 @@
 - new: add command `rconfig show default`
 - new: SNMP - add systemd rctSnmpd service, command`rconfig service snmpd set EnableOnControlPlane true`, use`/etc/snmp/snmpd.conf`cfg file, install first`apt isntall snmpd -y`
 - fix: change default add interface default AdminUp value to `false`
+- new: add service rctRadvd command `rconfig service radvd set EnableOnControlPlane true`
+- replaced netns aliase `pingc, ipc, sshc, traceroutec` with `rconfig ping/ssh/ip/traceroute`
 
 #### rct_0.2-2_amd64
 - new: rctExporter add current physical interface rate

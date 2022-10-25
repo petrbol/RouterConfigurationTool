@@ -19,7 +19,8 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
   -`rctKea4`\
   -`rctKea6`\
   -`rctKeaWatchdog`\
-  -`rctSnmpd`
+  -`rctSnmpd`\
+  -`rctRadvd` 
 - default directory `/etc/rct`, json configuration files
  
 ### Key features
@@ -37,7 +38,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Exporter for interface statistics based on Prometheus(prometheus.io) with customized interface names, grafana template included
 - Watchdog
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
-- Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog`
+- Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog, rctRadvd`
 - Static ipv4/ipv6 routes (netlink to controlplane)
 - Simple source nat on output interface (nat44 + output feature)
 - Dhcp4 client (ethernet, vlan)
@@ -120,10 +121,13 @@ note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` e
 `rconfig restore default` # restore configuration from default(created by `rconfig vpp setup`) to running without commit\
 `rconfig commit dpdk` # perform full vpp & controlplane restart\
 `rconfig address show`\
+
 `pingc` # ping command alias, executed in controlplane\
 `ipc` # ip command alias, executed in controlplane\
 `sshc` # ssh command alias, executed in controlplane\
 `traceroutec` # traceroute command alias, executed in controlplane\
+
+
 `birdc` # interactive bird debug cli\
 `birdc c` # reload bird configuration\
 `vppctl` # interactive vpp debug cli\
