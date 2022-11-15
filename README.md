@@ -68,13 +68,12 @@ Configuration and installation examples can be found in [docs](docs)
 * Minimum 2 ethernet interface (one for VPP and one for management). (note: You can also use the management port in vpp, but you lose management port accessibility.)
 
 
->## Installation
->##### 1. install Debian 11 
->##### 2. install depends
+>## Installation - Debian 11 
+>##### 1. install depends
 >```
 >apt install bird2 snmpd htop traceroute sed curl mc wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion liblog4cplus-2.0.5 libmariadb3 libpq5 mariadb-common mysql-common -y
 >```
->##### 3. modify grub configuration to set isolcpu for VPP
+>##### 2. modify grub configuration to set isolcpu for VPP
 >```
 >mcedit /etc/default/grub
 ># add to configuration file
@@ -82,7 +81,7 @@ Configuration and installation examples can be found in [docs](docs)
 ># run update grub bootloader
 >update-grub
 >```
->##### 4. download and install packages
+>##### 3. download and install packages
 >```
 >mkdir rctDebPkg && cd rctDebPkg
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/libvppinfra_22.10-release_amd64.deb
@@ -94,44 +93,40 @@ Configuration and installation examples can be found in [docs](docs)
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp6-server_2.0.3-isc20220725151155_amd64.deb
 >dpkg -i *.deb
 >```
->##### 5. !!! FOR PC Engines APU board only !!! - alternative kernel to fix jitter issue
+>##### 4. !!! FOR PC Engines APU board only !!! - alternative kernel to fix jitter issue
 >```
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb
 >dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb
 >update-grub
 >```
->##### 6. update grub, disable services and reboot
+>##### 5. disable VPP service and reboot
 >```
 >systemctl disable vpp
 >reboot
 >```
->##### 7. install Router Configuration Tool
+>##### 6. install Router Configuration Tool
 >```
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-2_amd64.deb
 >dpkg -i rct_0.2-2_amd64.deb
 >```
->##### 8. reload bash completion file (or logout & login to make bash-completion work again)
+>##### 7. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
 >```
->. /etc/profile.d/rconfig.sh
->```
->##### 9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
->```
+>. /etc/profile.d/rconfig.sh # reload bash completion file (or logout & login)
 >rconfig vpp setup # start setup
 >rconfig vpp set MainCore 1 Workers 2 # configure VPP to use 3 cpu cores for workers and core 0 as main
 >rconfig save -f # save additional configuration before start
 >rconfig save default # save configuration file as default cfg (`rconfig restore default`)
 >```
->##### 10. start rctStart - if configuration file exist, rct will start automatically
+>##### 8. If show your interfaces and you are still connected to the management port, you can enable rct on startup.
 >```
->systemctl start rctStart
->```
->##### 11. If show your interfaces and you are still connected to the management port, you can enable rct on startup.
->```
+># start service
+>systemctl start rctStart && sleep 5
 >vppctl show interface
+># if show your interfaces and you are still connected to the management port, you can enable rct on startup
 >systemctl enable rctStart
 >```
->##### 12. Enjoy `rconfig --help` 
+>##### 12. Enjoy
 
 
 ### Remove
