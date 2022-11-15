@@ -116,7 +116,6 @@ Configuration and installation examples can be found in [docs](docs)
 >rconfig vpp setup # start setup
 >rconfig vpp set MainCore 1 Workers 2 # configure VPP to use 3 cpu cores for workers and core 0 as main
 >rconfig save -f # save additional configuration before start
->rconfig save default # save configuration file as default cfg (`rconfig restore default`)
 >```
 >##### 8. If show your interfaces and you are still connected to the management port, you can enable rct on startup.
 >```
@@ -125,6 +124,7 @@ Configuration and installation examples can be found in [docs](docs)
 >vppctl show interface
 ># if show your interfaces and you are still connected to the management port, you can enable rct on startup
 >systemctl enable rctStart
+>rconfig save default # save configuration file as default cfg (`rconfig restore default`)
 >```
 >##### 12. Enjoy
 
