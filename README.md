@@ -126,7 +126,7 @@ Configuration and installation examples can be found in [docs](docs)
 >systemctl enable rctStart
 >rconfig save default # save configuration file as default cfg (`rconfig restore default`)
 >```
->##### 12. Enjoy
+>##### DONE ... Enjoy
 
 
 ### Remove
