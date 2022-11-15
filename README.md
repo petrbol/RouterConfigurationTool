@@ -66,7 +66,8 @@ Configuration and installation examples can be found in [docs](docs)
 * Multicore CPU (4 or more cores for better results)
 * Hardware with DPDK capable interface
 * Minimum 2 ethernet interface (one for VPP and one for management). (note: You can also use the management port in vpp, but you lose management port accessibility.)
-***
+
+
 >## Installation
 >##### 1. install Debian 11 
 >##### 2. modify `/etc/default/grub` to set isolcpu for VPP
@@ -127,7 +128,6 @@ Configuration and installation examples can be found in [docs](docs)
 >systemctl enable rctStart
 >```
 >##### 12. Enjoy `rconfig --help` 
-***
 
 
 ### Remove
