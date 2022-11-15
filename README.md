@@ -89,6 +89,7 @@ Configuration and installation examples can be found in [docs](docs)
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-core_22.10-release_amd64.deb
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-dpdk_22.10-release_amd64.deb
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp_22.10-release_amd64.deb
+>wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-common_2.0.3-isc20220725151155_amd64.deb
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp4-server_2.0.3-isc20220725151155_amd64.deb
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp6-server_2.0.3-isc20220725151155_amd64.deb
 >dpkg -i *.deb
@@ -101,7 +102,6 @@ Configuration and installation examples can be found in [docs](docs)
 >```
 >##### 6. update grub, disable services and reboot
 >```
->update-grub
 >systemctl disable vpp
 >reboot
 >```
