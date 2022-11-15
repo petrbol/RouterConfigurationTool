@@ -76,7 +76,8 @@ Configuration and installation examples can be found in [docs](docs)
 >##### 2. modify grub configuration to set isolcpu for VPP
 >```
 >mcedit /etc/default/grub
-># add to configuration file
+># modify the configuration file
+>GRUB_TIMEOUT=1
 >GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off" 
 ># run update grub bootloader
 >update-grub
@@ -98,7 +99,6 @@ Configuration and installation examples can be found in [docs](docs)
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb
 >wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb
 >dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb
->update-grub
 >```
 >##### 5. disable VPP service and reboot
 >```
