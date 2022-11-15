@@ -94,19 +94,6 @@ systemctl reload rctKea6 | systemctl restart rctKea6
           }
         ]
       }
-    ],
-    "loggers": [
-      {
-        "name": "kea-dhcp6",
-        "output_options": [
-          {
-            "output": "stdout",
-            "pattern": "%-5p %m\n"
-          }
-        ],
-        "severity": "INFO",
-        "debuglevel": 0
-      }
     ]
   }
 }
