@@ -77,7 +77,10 @@ Configuration and installation examples can be found in [docs](docs)
 >##### 3. modify grub configuration to set isolcpu for VPP
 >```
 >mcedit /etc/default/grub
->GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off"
+># add to configuration file
+>GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off" 
+># run update grub bootloader
+>update-grub
 >```
 >##### 4. download and install packages
 >```
