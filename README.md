@@ -123,7 +123,7 @@ Configuration and installation examples can be found in [docs](docs)
 >```
 >systemctl start rctStart
 >```
->##### 11. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
+>##### 11. If ```vppctl show interface``` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
 >```
 >systemctl enable rctStart
 >```
