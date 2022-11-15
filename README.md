@@ -70,13 +70,14 @@ Configuration and installation examples can be found in [docs](docs)
 
 >## Installation
 >##### 1. install Debian 11 
->##### 2. modify `/etc/default/grub` to set isolcpu for VPP
+>##### 2. install depends
 >```
+>apt install bird2 snmpd htop traceroute sed curl mc wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y
+>```
+>##### 3. modify grub configuration to set isolcpu for VPP
+>```
+>mcedit /etc/default/grub
 >GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off"
->```
->##### 3. install depends
->```
->apt install bird2 snmpd htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y
 >```
 >##### 4. download and install packages
 >```
@@ -99,8 +100,6 @@ Configuration and installation examples can be found in [docs](docs)
 >```
 >update-grub
 >systemctl disable vpp
->systemctl disable isc-kea-dhcp4-server
->systemctl disable isc-kea-dhcp6-server
 >reboot
 >```
 >##### 7. install Router Configuration Tool
