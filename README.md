@@ -69,16 +69,16 @@ Configuration and installation examples can be found in [docs](docs)
 
 
 >## Installation
-####1. install Debian 11 
-####2. modify `/etc/default/grub` to set isolcpu for VPP
+#### 1. install Debian 11 
+#### 2. modify `/etc/default/grub` to set isolcpu for VPP
 ```
 GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off"
 ```
-####3. install depends
+#### 3. install depends
 ```
 apt install bird2 snmpd htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y
 ```
-####4. download and install packages
+#### 4. download and install packages
 ```
 mkdir rctDebPkg
 wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/libvppinfra_22.10-release_amd64.deb
@@ -89,13 +89,13 @@ wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-k
 wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp6-server_2.0.3-isc20220725151155_amd64.deb
 cd rctDebPkg && dpkg -i *.deb
 ```
-####5. !!! FOR PC Engines APU board only !!! - alternative kernel to fix jitter issue
+#### 5. !!! FOR PC Engines APU board only !!! - alternative kernel to fix jitter issue
 ```
 wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb
 wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb
 dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb
 ```
-####6. update grub, disable services and reboot
+#### 6. update grub, disable services and reboot
 ```
 update-grub
 systemctl disable vpp
@@ -103,16 +103,16 @@ systemctl disable isc-kea-dhcp4-server
 systemctl disable isc-kea-dhcp6-server
 reboot
 ```
-####7. install Router Configuration Tool
+#### 7. install Router Configuration Tool
 ```
 wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-2_amd64.deb
 dpkg -i rct_0.2-2_amd64.deb
 ```
-####8. reload bash completion file (or logout & login to make bash-completion work again)
+#### 8. reload bash completion file (or logout & login to make bash-completion work again)
 ```
 . /etc/profile.d/rconfig.sh
 ```
-####9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
+#### 9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
 ```
 rconfig vpp setup # start setup
 rconfig vpp set MainCore 1 Workers 2 # configure VPP to use 3 cpu cores for workers and core 0 as main
