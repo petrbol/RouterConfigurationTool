@@ -69,11 +69,11 @@ Configuration and installation examples can be found in [docs](docs)
 
 
 >## Installation
->####1. install Debian 11 
->####2. modify `/etc/default/grub` to set isolcpu for VPP
->```
->GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off"
->```
+####1. install Debian 11 
+####2. modify `/etc/default/grub` to set isolcpu for VPP
+```
+GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off"
+```
 ####3. install depends
 ```
 apt install bird2 snmpd htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y
