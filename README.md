@@ -76,7 +76,10 @@ Configuration and installation examples can be found in [docs](docs)
 >```
 >##### 3. install depends
 >```
->apt install bird2 snmpd htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y
+>apt install \
+>bird2 snmpd htop traceroute sed curl wget sudo\
+>libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1\
+>python3 libsubunit0 bash-completion -y
 >```
 >##### 4. download and install packages
 >```
