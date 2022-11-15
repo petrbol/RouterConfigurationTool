@@ -19,8 +19,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
   -`rctKea4`\
   -`rctKea6`\
   -`rctKeaWatchdog`\
-  -`rctSnmpd`\
-  -`rctRadvd` 
+  -`rctSnmpd`
 - default directory `/etc/rct`, json configuration files
  
 ### Key features
@@ -38,10 +37,9 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Exporter for interface statistics based on Prometheus(prometheus.io) with customized interface names, grafana template included
 - Watchdog
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
-- Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog, rctRadvd`
+- Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog`
 - Static ipv4/ipv6 routes (netlink to controlplane)
 - Simple source nat on output interface (nat44 + output feature)
-- Dhcp4 client (ethernet, vlan)
 - Preconfigured systemd services for snmpd (on controlplane)
 
 ### Configuration example
@@ -62,7 +60,6 @@ Configuration and installation examples can be found in [docs](docs)
 ### rctExporter quick look
 ![rctExporter example](img/rctExporter.png?raw=true)
 
-
 ### Requirements
 * Debian 11
 * VPP capable hardware
@@ -70,39 +67,67 @@ Configuration and installation examples can be found in [docs](docs)
 * Hardware with DPDK capable interface
 * Minimum 2 ethernet interface (one for VPP and one for management). (note: You can also use the management port in vpp, but you lose management port accessibility.)
 
-### Installation
-1. install Debian 11 
-2. modify `/etc/default/grub` to set isolcpu for VPP\
-```GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off"```
-3. install VPP depends\
-`apt install bird2 snmpd htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y`
-4. add VPP release `https://packagecloud.io/fdio/release` repository\
-`curl -s https://packagecloud.io/install/repositories/fdio/release/script.deb.sh | sudo bash`
-5. install packages\
-`apt install vpp vpp-plugin-core vpp-plugin-dpdk -y`
-6. ! OUTDATED: install alternative kernel for PC Engines APU board only\
-`wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb` # download kernel headers\
-`wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb` # download kernel image\
-`dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb` # install kernel
-7. update grub, disable VPP service and perform reboot before install rct .deb package\
-`update-grub && systemctl stop vpp && systemctl disable vpp && reboot`
-8. install Router Configuration Tool\
-`wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-2_amd64.deb` # download latest rct package\
-`dpkg -i rct_0.2-2_amd64.deb` # install package
-9. reload bash completion file (or logout & login to make bash-completion work again)\
-`. /etc/profile.d/rconfig.sh`
-10. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.\
-`rconfig vpp setup` # start setup\
-`rconfig vpp set MainCore 1 Workers 2` # configure VPP to use 3 cpu cores for workers and core 0 as main\
-`rconfig save -f` # save additional configuration before start\
-`rconfig save default` # save configuration file as default cfg (`rconfig restore default`)
-11. `systemctl start rctStart` # if configuration file exist, rct will start automatically
-12. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
-`systemctl enable rctStart`
-13. Enjoy `rconfig --help` 
-#### * quick installation script for APU4 + Debian 11, log as root (su - ),not recommended (use manual installation steps 1-13) 
-1. `apt install wget -y && wget https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall1.sh && bash quickInstall1.sh` # executing will finish with reboot, after reboot continuous to next step\
-2. `wget https://raw.githubusercontent.com/petrbol/RouterConfigurationTool/main/docs/quickInstall2.sh && bash quickInstall2.sh`
+
+>## Installation
+>####1. install Debian 11 
+>####2. modify `/etc/default/grub` to set isolcpu for VPP
+>```
+>GRUB_CMDLINE_LINUX="console=ttyS0,115200n8 isolcpus=1-3 nohz_full=1-3 cpufreq.default_governor=performance intel_iommu=off"
+>```
+####3. install depends
+```
+apt install bird2 snmpd htop traceroute sed curl wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion -y
+```
+####4. download and install packages
+```
+mkdir rctDebPkg
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/libvppinfra_22.10-release_amd64.deb
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-core_22.10-release_amd64.deb
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-dpdk_22.10-release_amd64.deb
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp_22.10-release_amd64.deb
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp4-server_2.0.3-isc20220725151155_amd64.deb
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp6-server_2.0.3-isc20220725151155_amd64.deb
+cd rctDebPkg && dpkg -i *.deb
+```
+####5. !!! FOR PC Engines APU board only !!! - alternative kernel to fix jitter issue
+```
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb
+dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb
+```
+####6. update grub, disable services and reboot
+```
+update-grub
+systemctl disable vpp
+systemctl disable isc-kea-dhcp4-server
+systemctl disable isc-kea-dhcp6-server
+reboot
+```
+####7. install Router Configuration Tool
+```
+wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-2_amd64.deb
+dpkg -i rct_0.2-2_amd64.deb
+```
+####8. reload bash completion file (or logout & login to make bash-completion work again)
+```
+. /etc/profile.d/rconfig.sh
+```
+####9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
+```
+rconfig vpp setup # start setup
+rconfig vpp set MainCore 1 Workers 2 # configure VPP to use 3 cpu cores for workers and core 0 as main
+rconfig save -f # save additional configuration before start
+rconfig save default # save configuration file as default cfg (`rconfig restore default`)
+```
+####10. start rctStart - if configuration file exist, rct will start automatically
+```
+systemctl start rctStart
+```
+####11. If `vppctl show interface` show your interfaces, if you are still connected to the management port, you can enable rct on startup.\
+```
+systemctl enable rctStart
+```
+####12. Enjoy `rconfig --help` 
 
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
@@ -121,13 +146,9 @@ note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` e
 `rconfig restore default` # restore configuration from default(created by `rconfig vpp setup`) to running without commit\
 `rconfig commit dpdk` # perform full vpp & controlplane restart\
 `rconfig address show`\
-
-`pingc` # ping command alias, executed in controlplane\
-`ipc` # ip command alias, executed in controlplane\
-`sshc` # ssh command alias, executed in controlplane\
-`traceroutec` # traceroute command alias, executed in controlplane\
-
-
+`rconfig ping` # ping command alias, executed in controlplane\
+`rconfig ip` # ip command alias, executed in controlplane\
+`rconfig traceroute` # traceroute command alias, executed in controlplane\
 `birdc` # interactive bird debug cli\
 `birdc c` # reload bird configuration\
 `vppctl` # interactive vpp debug cli\
@@ -136,7 +157,10 @@ note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` e
 `systemctl status rctExporter`\
 `systemctl status rctExporterCp`\
 `systemctl status rctSshd`\
-`systemctl status rctVpp`
+`systemctl status rctVpp`\
+`systemctl status rctKea4`\
+`systemctl status rctKea6`\
+`systemctl status rctSnmpd`
 
 ### Known issues
 - jitter issue (about 6-10ms) can be observed on the PC Engines APU2/4 board with Debian 11 + original kernel. Custom kernel with ubuntu kernel .config fix this issue.

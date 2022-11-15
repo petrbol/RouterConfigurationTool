@@ -1,33 +1,15 @@
 ### ISC Kea DHCPv4/6 server
 
 ***
-> #### Install:
-
-```
-curl -1sLf 'https://dl.cloudsmith.io/public/isc/kea-2-0/setup.deb.sh' | sudo -E bash
-apt update
-apt install isc-kea-dhcp4-server
-apt install isc-kea-dhcp6-server
-apt install radvd
-systemctl stop isc-kea-dhcp4-server
-systemctl stop isc-kea-dhcp6-server
-systemctl stop radvd
-systemctl disable isc-kea-dhcp4-server
-systemctl disable isc-kea-dhcp6-server
-systemctl disable radvd
-```
-
 > #### Enable systemd preconfigured Kea service
 
 ```
 rconfig service kea4 set EnableOnControlPlane true
 rconfig service kea6 set EnableOnControlPlane true
-rconfig service radvd set EnableOnControlPlane true
 
 # to reload service use
 systemctl reload rctKea4 | systemctl restart rctKea4
 systemctl reload rctKea6 | systemctl restart rctKea6
-systemctl reload rctRadvd | systemctl restart rctRadvd
 ```
 
 > #### Example: /etc/kea/kea-dhcp4.conf
@@ -128,18 +110,4 @@ systemctl reload rctRadvd | systemctl restart rctRadvd
     ]
   }
 }
-```
-#### Example /etc/radvd.conf
-```
-interface loopBridgeCust
-{
-    MinRtrAdvInterval 3;
-    MaxRtrAdvInterval 4;
-    AdvSendAdvert on;
-    AdvManagedFlag on;
-    prefix 2a01:500::/64 {
-        AdvValidLifetime 14300;
-        AdvPreferredLifetime 14200;
-    };
-};
 ```
