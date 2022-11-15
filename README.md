@@ -7,7 +7,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 
 - Based on VPP 22.06-rc & linux-cp plugin. Thanks to all people that participate in this project.
 - rconfig written in GO, Cobra cli interface, bash-completion
-- set of app: `rconfig, rctWatchdog, rctExporter`
+- set of app: `rconfig, rctWatchdog, rctExporter, rctKeaWatchdog, rctKea6RouteHelper`
 - set of systemd services:\
   -`rctBird` # use default bird conf file location\
   -`rctExporter`\

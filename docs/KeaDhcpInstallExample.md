@@ -61,7 +61,7 @@ systemctl reload rctKea6 | systemctl restart rctKea6
   "Dhcp6": {
     "interfaces-config": {
       "interfaces": [
-        "loopBridgeCust"
+        "enp4s0"
       ]
     },
     "lease-database": {
@@ -78,13 +78,22 @@ systemctl reload rctKea6 | systemctl restart rctKea6
         "data": "2001:db8:2::45, 2001:db8:2::100"
       }
     ],
+    "hooks-libraries": [
+      {
+        "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_run_script.so",
+        "parameters": {
+          "name": "/usr/sbin/rctKea6RouteHelper",
+          "sync": false
+        }
+      }
+    ],
     "subnet6": [
       {
-        "interface": "loopBridgeCust",
+        "interface": "enp4s0",
         "subnet": "2a01:500::/64",
         "reservations": [
           {
-            "hw-address": "6C:3B:6B:7B:C7:C9",
+            "hw-address": "B4:FB:E4:5C:40:3F",
             "ip-addresses": [
               "2a01:500::2"
             ],
