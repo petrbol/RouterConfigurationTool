@@ -54,7 +54,7 @@ systemctl reload rctKea6 | systemctl restart rctKea6
 }
 ```
 
-#### Example kea-dhcp6.conf
+>#### Example /etc/kea/kea-dhcp6.conf
 
 ```json lines
 {
