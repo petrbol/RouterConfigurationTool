@@ -14,6 +14,9 @@ type ConfigFileStruct struct {
 type VppStruct struct {
 	MainCore              uint8
 	Workers               uint8
+	HugepagesSize         int64
+	MainHeapSize          int64
+	StatsegSize           int64
 	LogToFile             bool
 	DefaultLogLevel       string
 	DefaultSyslogLogLevel string
@@ -24,8 +27,13 @@ type ServiceStruct struct {
 	Sshd     ServiceCfgStruct
 	Exporter ExporterCfgStruct
 	Kea4     ServiceCfgStruct
-	Kea6     ServiceCfgStruct
-    Snmpd    ServiceCfgStruct
+	Kea6     Kea6CfgStruct
+	Snmpd    ServiceCfgStruct
+}
+
+type Kea6CfgStruct struct {
+	EnableOnControlPlane bool
+	RouteHelper          bool
 }
 
 type ServiceCfgStruct struct {
@@ -49,23 +57,18 @@ type RouteCfgStruct struct {
 	Destination string
 	Gateway     string
 }
-
 ```
 >### Interfaces structure
 ```go
-package cfgStructures
-
-import (
-	"git.fd.io/govpp.git/binapi/acl_types"
-	"git.fd.io/govpp.git/binapi/ethernet_types"
-	"git.fd.io/govpp.git/binapi/ip_types"
-	"git.fd.io/govpp.git/binapi/l2"
-)
-
 type Nat44Struct struct {
 	OutputFeature bool
 	Address       ip_types.IP4Address
 	StaticMap     bool
+}
+
+type RouterAdvertisementStruct struct {
+	Enable bool
+	Prefix string
 }
 
 type AbfPolicyStruct struct {
@@ -91,16 +94,16 @@ type EthernetStruct struct {
 	Vlan   []VlanStruct
 }
 type EthernetCfgStruct struct {
-	Comment         Comment
-	AdminUp         bool
-	Address         []ip_types.AddressWithPrefix
-	Dhcp4client     bool
-	Policy          []AbfPolicyStruct
-	Nat44           Nat44Struct
-	DpdkPciDeviceId PciDeviceId
-	DpdkRxQueues    uint8
-	DpdkTxQueues    uint8
-	Mtu             uint32
+	Comment             Comment
+	AdminUp             bool
+	Address             []ip_types.AddressWithPrefix
+	RouterAdvertisement RouterAdvertisementStruct
+	Policy              []AbfPolicyStruct
+	Nat44               Nat44Struct
+	DpdkPciDeviceId     PciDeviceId
+	DpdkRxQueues        uint8
+	DpdkTxQueues        uint8
+	Mtu                 uint32
 }
 
 // vlan struct
@@ -110,16 +113,16 @@ type VlanStruct struct {
 	Cfg          VlanCfgStruct
 }
 type VlanCfgStruct struct {
-	Comment     Comment
-	AdminUp     bool
-	Address     []ip_types.AddressWithPrefix
-	Dhcp4client bool
-	Policy      []AbfPolicyStruct
-	Nat44       Nat44Struct
-	Dot1q       Dot1q
-	InnerDot1q  Dot1q
-	ExactMatch  bool
-	Pop1        bool
+	Comment             Comment
+	AdminUp             bool
+	Address             []ip_types.AddressWithPrefix
+	RouterAdvertisement RouterAdvertisementStruct
+	Policy              []AbfPolicyStruct
+	Nat44               Nat44Struct
+	Dot1q               Dot1q
+	InnerDot1q          Dot1q
+	ExactMatch          bool
+	Pop1                bool
 }
 
 // loopback structures
@@ -129,14 +132,14 @@ type LoopbackStruct struct {
 	Cfg          LooopbackCfgStruct
 }
 type LooopbackCfgStruct struct {
-	Comment     Comment
-	AdminUp     bool
-	Address     []ip_types.AddressWithPrefix
-	Dhcp4client bool
-	Policy      []AbfPolicyStruct
-	Nat44       Nat44Struct
-	MacAddress  ethernet_types.MacAddress
-	Mtu         uint32
+	Comment             Comment
+	AdminUp             bool
+	Address             []ip_types.AddressWithPrefix
+	RouterAdvertisement RouterAdvertisementStruct
+	Policy              []AbfPolicyStruct
+	Nat44               Nat44Struct
+	MacAddress          ethernet_types.MacAddress
+	Mtu                 uint32
 }
 
 // bridge structures
@@ -189,5 +192,4 @@ type L2xConnectCfgStruct struct {
 	PortA   IfName
 	PortB   IfName
 }
-
 ```
