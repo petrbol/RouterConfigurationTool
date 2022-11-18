@@ -80,10 +80,26 @@ systemctl reload rctKea6 | systemctl restart rctKea6
     ],
     "hooks-libraries": [
       {
-        "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_run_script.so",
+        "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_lease_cmds.so",
+        "parameters": { }
+      },
+      {
+        "library": "/usr/lib/x86_64-linux-gnu/kea/hooks/libdhcp_ha.so",
         "parameters": {
-          "name": "/usr/sbin/rctKea6RouteHelper",
-          "sync": false
+          "high-availability": [ {
+            "this-server-name": "server1",
+            "mode": "passive-backup",
+            "wait-backup-ack": false,
+            "peers": [{
+              "name": "server1",
+              "url": "http://127.0.0.1:8000/",
+              "role": "primary"
+            }, {
+              "name": "server2",
+              "url": "http://127.0.0.1:8082/",
+              "role": "backup"
+            }]
+          } ]
         }
       }
     ],
@@ -99,6 +115,14 @@ systemctl reload rctKea6 | systemctl restart rctKea6
             ],
             "prefixes": [
               "2a01:600::/56"
+            ]
+          },{
+            "hw-address": "6C:3B:6B:7B:C7:C9",
+            "ip-addresses": [
+              "2a01:500::3"
+            ],
+            "prefixes": [
+              "2a01:700::/56"
             ]
           }
         ]

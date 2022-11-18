@@ -19,7 +19,8 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
   -`rctKea4`\
   -`rctKea6`\
   -`rctKeaWatchdog`\
-  -`rctSnmpd`
+  -`rctSnmpd`\
+  -`rctKea6RouteHelper`
 - default directory `/etc/rct`, json configuration files
  
 ### Key features
@@ -41,6 +42,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Static ipv4/ipv6 routes (netlink to controlplane)
 - Simple source nat on output interface (nat44 + output feature)
 - Preconfigured systemd services for snmpd (on controlplane)
+- Ipv6 prefix delegation route injection helper (from Kea6)
 
 ### Configuration example
 `rconfig vlan add vlan77 interface enp3s0`# add vlan subinterface\
