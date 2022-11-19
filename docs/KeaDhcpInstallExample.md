@@ -4,8 +4,14 @@
 > #### Enable systemd preconfigured Kea service
 
 ```
+rconfig address add 192.168.19.1/24 interface enp4s0 
+rconfig address add 2a01:500::1/64 interface enp4s0 
+rconfig ethernet set enp4s0 AdminUp true 
 rconfig service kea4 set EnableOnControlPlane true
 rconfig service kea6 set EnableOnControlPlane true
+rconfig service kea6 set RouteHelper true 
+rconfig ra set enp4s0 Enable true 
+rconfig ra set enp4s0 Prefix 2a01:500::/64
 
 # to reload service use
 systemctl reload rctKea4 | systemctl restart rctKea4

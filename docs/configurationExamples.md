@@ -93,3 +93,9 @@ rconfig save
 # edit `/etc/snmp/snmpd.conf` to set listen ip address
 systemctl restart rctSnmpd.service
 ```
+***
+### IPv6 router advertisement
+```
+rconfig ra set enp4s0 Enable true 
+rconfig ra set enp4s0 Prefix 2a01:500::/64
+```
