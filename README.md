@@ -39,7 +39,6 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - Watchdog
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
 - Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog`
-- Static ipv4/ipv6 routes (netlink to controlplane)
 - Simple source nat on output interface (nat44 + output feature)
 - Preconfigured systemd services for snmpd (on controlplane)
 - Ipv6 prefix delegation route injection helper (from Kea6)
