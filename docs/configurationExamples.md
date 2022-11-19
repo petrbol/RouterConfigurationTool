@@ -75,14 +75,6 @@ rconfig bridge port set loopBr1BVI PortType 1
 ```
 PortType 1 is set to configure BVI.
 ***
-### static route
-```
-rconfig route add 0.0.0.0/0 Gateway 10.10.15.2
-rconfig route add ::/0 Gateway 2a01:100::1
-rconfig route show
-rconfig route del 1
-```
-***
 ### simple Source NAT
 configured on "wan" output interface\
 OutputFeature = enable snat, established+related wan=>lan
@@ -91,11 +83,6 @@ MapLocal = enable access from internet to wan Address
 ```
 rconfig nat44 set enp2s0 OutputFeature true Address 192.168.44.199 MapLocal true
 rconfig nat44 set enp2s0 OutputFeature false
-```
-***
-### dhcp4 client
-```
-rconfig ethernet set enp2s0 Dhcp4client true
 ```
 ***
 ### snmpd
