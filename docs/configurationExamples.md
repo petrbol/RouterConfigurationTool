@@ -8,7 +8,10 @@ rconfig show
 ***
 ### VPP configuration example
 ```
-rconfig vpp set MainCore 0 Workers 3
+rconfig vpp set MainCore 1 Workers 2
+rconfig vpp set MainHeapSize 6
+rconfig vpp set MainHeapSize 2
+rconfig vpp set StatsegSize 128
 ```
 ***
 ### commit help
@@ -98,4 +101,12 @@ systemctl restart rctSnmpd.service
 ```
 rconfig ra set enp4s0 Enable true 
 rconfig ra set enp4s0 Prefix 2a01:500::/64
+rconfig ra set enp4s0 Prefix none
+```
+***
+### Static route
+```
+rconfig route add 2a01:100::/64 Gateway 2a01:200::2
+rconfig route show
+rconfig route del 0
 ```

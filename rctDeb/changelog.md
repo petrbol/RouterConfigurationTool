@@ -2,7 +2,8 @@
 - new: command `rconfig show default`
 - fix: check for commit done before `rconfig save default`
 - new: argument --force argument to `rconfig save default -f`
-- new: SNMP - add systemd rctSnmpd service, command`rconfig service snmpd set EnableOnControlPlane true`, use`/etc/snmp/snmpd.conf`cfg file, install first`apt isntall snmpd -y`
+- new: SNMP - initial SNMPd integration, systemd rctSnmpd|rctSnmpdCp service, command`rconfig service snmpd set EnableOnControlPlane|EnableOnManagement true`
+- new: SNMP - default listen on `0.0.0.0:161`, community `public`
 - fix: change default add interface default AdminUp value to `false`
 - removed: netns aliases `pingc, ipc, traceroutec`
 - new: add rconfig command alias for `rconfig ping/ip/traceroute`
@@ -10,16 +11,18 @@
 - new: add ipv6 RA command, example `rconfig ra set enp4s0 Enable true`
 - new: add ipv6 RA configure default RA prefix, example `rconfig ra set enp4s0 Prefix 2a01:300::/56`
 - removed: dhcp4client
-- removed: static route command (when large amount of routes(1M) is installed, static route reconfiguration will crash. Use bird to mantain static routes)
+- removed: rctExporter
+- fix: change default static route metric to 2048
+- fix: reconfigure static routes only if any static route is configured (to prevent reconfiguration stuck when large amount of routes - aka 1M)
 - new: add isc kea4 + kea6 to the default installation manual
 - new: reworked installation manual (using local deb packages)
-- new: service systemd rctKea6RouteHelper (insert ipv6 delegated routes to the routing table, require specific kea HA configuration)
+- new: service systemd rctKea6RouteHelper (insert ipv6 delegated routes to the routing table, require specific kea HA configuration, default route metric 4096)
 - new: enable IPv6 PD route injection from Kea `rconfig service kea6 set RouteHelper true`
 - new: modified kea dhcp6 example to use with ipv6 PD route helper
 - fix: change kernel net.core.rmem/wmem default value
 - new: make kernel hugepages size configurable, default 2, size in G, eq:`rconfig vpp set MainHeapSize 6`
 - new: make VPP main-heap-size configurable, default 1, size in G, eq:`rconfig vpp set MainHeapSize 2`
-- new: make VPP statseg size configurable, default 32, size in M, eq:`rconfig vpp set StatsegSize 128`
+- new: make VPP statseg size configurable, default 32, size in M, eq:`rconfig vpp set StatsegSize 128` (eq: set size 128 for 1,5M routes)
 
 #### rct_0.2-2_amd64
 - new: rctExporter add current physical interface rate

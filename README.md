@@ -10,8 +10,6 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - set of app: `rconfig, rctWatchdog, rctExporter, rctKeaWatchdog, rctKea6RouteHelper`
 - set of systemd services:\
   -`rctBird` # use default bird conf file location\
-  -`rctExporter`\
-  -`rctExporterCp`\
   -`rctSshd` # use default sshd conf file location  \
   -`rctWatchdog`\
   -`rctVpp`\
@@ -20,6 +18,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
   -`rctKea6`\
   -`rctKeaWatchdog`\
   -`rctSnmpd`\
+  -`rctSnmpdCp`\
   -`rctKea6RouteHelper`
 - default directory `/etc/rct`, json configuration files
  
@@ -37,10 +36,10 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - L2xconnect
 - Exporter for interface statistics based on Prometheus(prometheus.io) with customized interface names, grafana template included
 - Watchdog
-- Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctExporterCp`
+- Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctSnmpdCp`
 - Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog`
 - Simple source nat on output interface (nat44 + output feature)
-- Preconfigured systemd services for snmpd (on controlplane)
+- Preconfigured systemd services for snmpd to read VPP traffic (on controlplane)
 - Ipv6 prefix delegation route injection helper (from Kea6)
 
 ### Configuration example
@@ -72,7 +71,7 @@ Configuration and installation examples can be found in [docs](docs)
 >## Installation - Debian 11 
 >##### 1. install depends
 >```
->apt install bird2 snmpd htop traceroute sed curl mc wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion liblog4cplus-2.0.5 libmariadb3 libpq5 mariadb-common mysql-common -y
+>apt install bird2 htop traceroute sed curl mc wget sudo libmbedtls12 libmbedx509-0 libmbedcrypto3 libnl-3-200 libnl-route-3-200 libnuma1 python3 libsubunit0 bash-completion liblog4cplus-2.0.5 libmariadb3 libpq5 mariadb-common mysql-common -y
 >```
 >##### 2. modify grub configuration to set isolcpu for VPP
 >```
@@ -155,13 +154,12 @@ note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` e
 `vppctl` # interactive vpp debug cli\
 `ip netns exec controlplane bash` # jump from management namespace to controlplane namespace (useful for debug)\
 `systemctl status rctBird`\
-`systemctl status rctExporter`\
-`systemctl status rctExporterCp`\
 `systemctl status rctSshd`\
 `systemctl status rctVpp`\
 `systemctl status rctKea4`\
 `systemctl status rctKea6`\
-`systemctl status rctSnmpd`
+`systemctl status rctSnmpd`\
+`systemctl status rctKea6RouteHelper`
 
 ### Known issues
 - jitter issue (about 6-10ms) can be observed on the PC Engines APU2/4 board with Debian 11 + original kernel. Custom kernel with ubuntu kernel .config fix this issue.
