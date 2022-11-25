@@ -1,5 +1,5 @@
 #### rct_0.2-3_amd64
-- WARNING: rconfig service structure reworked, past enabled service will not start automatically, enable it and commit & save again (bird,ssh...) - use MNG port to upgrade
+- WARNING: service structure reworked, past enabled service will not start automatically, enable it and commit & save again (bird,ssh...) - use MNG port to upgrade
 - new: command `rconfig show default`
 - fix: check for commit done before `rconfig save default`
 - new: argument --force argument to `rconfig save default -f`
