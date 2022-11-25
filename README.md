@@ -5,7 +5,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 
 ### About
 
-- Based on VPP 22.06-rc & linux-cp plugin. Thanks to all people that participate in this project.
+- Based on VPP 22.10 & linux-cp plugin, ISC Kea DHCP, Bird internet routing daemon. Thanks to all people that participate in these projects.
 - rconfig written in GO, Cobra cli interface, bash-completion
 - set of app: `rconfig, rctWatchdog, rctExporter, rctKeaWatchdog, rctKea6RouteHelper`
 - set of systemd services:\
@@ -107,8 +107,8 @@ Configuration and installation examples can be found in [docs](docs)
 >```
 >##### 6. install Router Configuration Tool
 >```
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-2_amd64.deb
->dpkg -i rct_0.2-2_amd64.deb
+>wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-3_amd64.deb
+>dpkg -i rct_0.2-3_amd64.deb
 >```
 >##### 7. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
 >```
@@ -135,8 +135,8 @@ Configuration and installation examples can be found in [docs](docs)
 ### How to upgrade
 note: !!! install all actual dependents from upper section - point 3. !!!
 note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` exist, service `rctStart` will be started and enabled after startup.
-1. download latest rct version `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-2_amd64.deb`
-2. install `dpkg -i rct_0.2-2_amd64.deb`
+1. download latest rct version `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-3_amd64.deb`
+2. install `dpkg -i rct_0.2-3_amd64.deb`
 3. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
 
