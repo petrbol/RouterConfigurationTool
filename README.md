@@ -85,19 +85,19 @@ Configuration and installation examples can be found in [docs](docs)
 >##### 3. download and install packages
 >```
 >mkdir rctDebPkg && cd rctDebPkg
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/libvppinfra_22.10-release_amd64.deb
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-core_22.10-release_amd64.deb
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-dpdk_22.10-release_amd64.deb
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp_22.10-release_amd64.deb
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-common_2.0.3-isc20220725151155_amd64.deb
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp4-server_2.0.3-isc20220725151155_amd64.deb
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp6-server_2.0.3-isc20220725151155_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/libvppinfra_22.10-release_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-core_22.10-release_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-dpdk_22.10-release_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp_22.10-release_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-common_2.0.3-isc20220725151155_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp4-server_2.0.3-isc20220725151155_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp6-server_2.0.3-isc20220725151155_amd64.deb
 >dpkg -i *.deb
 >```
 >##### 4. !!! FOR PC Engines APU board only !!! - alternative kernel to fix jitter issue
 >```
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb
 >dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb
 >```
 >##### 5. disable VPP service and reboot
@@ -107,7 +107,7 @@ Configuration and installation examples can be found in [docs](docs)
 >```
 >##### 6. install Router Configuration Tool
 >```
->wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-3_amd64.deb
+>wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-3_amd64.deb
 >dpkg -i rct_0.2-3_amd64.deb
 >```
 >##### 7. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
@@ -135,7 +135,8 @@ Configuration and installation examples can be found in [docs](docs)
 ### How to upgrade
 note: !!! install all actual dependents from upper section - point 3. !!!
 note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` exist, service `rctStart` will be started and enabled after startup.
-1. download latest rct version `wget https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-3_amd64.deb`
+note: If you need upgrade VPP, use installation instruction above
+1. download latest rct version `wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-3_amd64.deb`
 2. install `dpkg -i rct_0.2-3_amd64.deb`
 3. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`

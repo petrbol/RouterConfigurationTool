@@ -1,5 +1,6 @@
 #### rct_0.2-3_amd64
 - WARNING: service structure reworked, past enabled service will not start automatically, enable it and commit & save again (bird,ssh...) - use MNG port to upgrade
+- new: change VPP version and installation steps. Direct packages of VPP are used now (instead of VPP repos).
 - new: command `rconfig show default`
 - fix: check for commit done before `rconfig save default`
 - new: argument --force argument to `rconfig save default -f`
