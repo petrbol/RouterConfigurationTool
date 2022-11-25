@@ -1,8 +1,9 @@
 #### rct_0.2-3_amd64
+- WARNING: rconfig service structure reworked, past enabled service will not start automatically, enable it and commit & save again (bird,ssh...) - use MNG port to upgrade
 - new: command `rconfig show default`
 - fix: check for commit done before `rconfig save default`
 - new: argument --force argument to `rconfig save default -f`
-- new: SNMP - initial SNMPd integration, systemd rctSnmpd|rctSnmpdCp service, command`rconfig service snmpd set EnableOnControlPlane|EnableOnManagement true`
+- new: SNMP - initial SNMPd integration, systemd rctSnmpd|rctSnmpdCp service, command`rconfig service snmpd onControlPlane|onManagement set Enable true`
 - new: SNMP - default listen on `0.0.0.0:161`, community `public`
 - fix: change default add interface default AdminUp value to `false`
 - removed: netns aliases `pingc, ipc, traceroutec`

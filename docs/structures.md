@@ -1,5 +1,11 @@
 >### Main config file structure
 ```go
+package cfgStructures
+
+import (
+	"net"
+)
+
 type ConfigFileStruct struct {
 	Ethernet     []EthernetStruct
 	Loopback     []LoopbackStruct
@@ -23,28 +29,42 @@ type VppStruct struct {
 }
 
 type ServiceStruct struct {
-	Bird     ServiceCfgStruct
-	Sshd     ServiceCfgStruct
-	Exporter ExporterCfgStruct
-	Kea4     ServiceCfgStruct
-	Kea6     Kea6CfgStruct
-	Snmpd    ServiceCfgStruct
+	Bird struct {
+		OnControlPlane ServiceCfgStruct
+	}
+	Sshd struct {
+		OnControlPlane ServiceCfgStruct
+	}
+	Kea4 struct {
+		OnControlPlane Kea4OnControlPlaneStruct
+	}
+	Kea6 struct {
+		OnControlPlane Kea6OnControlPlaneStruct
+	}
+	Snmpd struct {
+		OnManagement   SnmpdCfgStruct
+		OnControlPlane SnmpdCfgStruct
+	}
 }
 
-type Kea6CfgStruct struct {
-	EnableOnControlPlane bool
-	RouteHelper          bool
+type Kea4OnControlPlaneStruct struct {
+	Enable bool
+}
+
+type Kea6OnControlPlaneStruct struct {
+	Enable      bool
+	RouteHelper bool
 }
 
 type ServiceCfgStruct struct {
-	EnableOnControlPlane bool
+	Enable bool
 }
 
-type ExporterCfgStruct struct {
-	EnableOnManagement   bool
-	EnableOnControlPlane bool
-	ListenOnAddr         net.IP
-	ListenOnPort         uint16
+type SnmpdCfgStruct struct {
+	Enable       bool
+	Community    Comment
+	ListenOnAddr net.IP
+	ListenOnPort uint16
 }
 
 type RouteStruct struct {
@@ -57,6 +77,7 @@ type RouteCfgStruct struct {
 	Destination string
 	Gateway     string
 }
+
 ```
 >### Interfaces structure
 ```go

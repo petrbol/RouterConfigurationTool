@@ -49,8 +49,8 @@ rconfig abf path add 10 policy custPolicy
 rconfig abf path set 10 policy custPolicy ViaAddress 192.168.55.100 # to enable ping from 192.168.55.0/24 => 192.168.55.100/32
 
 # enable services 
-rconfig service bird set EnableOnControlPlane true 
-rconfig service sshd set EnableOnControlPlane true 
+rconfig service bird onControlPlane set Enable true 
+rconfig service sshd onControlPlane set Enable true 
 
 # commit and save
 rconfig commit

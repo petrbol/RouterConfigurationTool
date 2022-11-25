@@ -90,7 +90,7 @@ rconfig nat44 set enp2s0 OutputFeature false
 ***
 ### snmpd
 ```
-rconfig service snmpd set EnableOnControlPlane true
+rconfig service snmpd onControlPlane set Enable true
 rconfig commit
 rconfig save
 # edit `/etc/snmp/snmpd.conf` to set listen ip address
