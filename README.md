@@ -107,7 +107,7 @@ Configuration and installation examples can be found in [docs](docs)
 >```
 >##### 6. install Router Configuration Tool
 >```
->wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-3_amd64.deb
+>wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-3_amd64.deb
 >dpkg -i rct_0.2-3_amd64.deb
 >```
 >##### 7. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
