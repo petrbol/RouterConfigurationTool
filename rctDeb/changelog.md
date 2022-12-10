@@ -1,3 +1,7 @@
+#### rct_0.2-4_amd64
+- fix: rctKea6RouteHelper change set restored unknown routes expiration to 86400 
+- fix: rctKea6RouteHelper removed netns attribute
+
 #### rct_0.2-3_amd64
 - WARNING: service structure reworked, past enabled service will not start automatically, enable it and commit & save again (bird,ssh...) - use MNG port to upgrade
 - new: change VPP version and installation steps. Direct packages of VPP are used now (instead of VPP repos).
