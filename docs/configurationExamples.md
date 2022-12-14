@@ -106,7 +106,23 @@ rconfig ra set enp4s0 Prefix none
 ***
 ### Static route
 ```
-rconfig route add 2a01:100::/64 Gateway 2a01:200::2
+rconfig route add 10
+rconfig route set 10 Destination 2a01:100::/64 Gateway 2a01:200::2 Enable true
 rconfig route show
-rconfig route del 0
+rconfig route del 10
+```
+***
+### Wireguard
+```
+rconfig wireguard interface add wg0
+rconfig wireguard interface set wg0 AdminUp true ListenPort 12345 PrivateKey xxxxx PublicKey xxxxx SrcAddress 1.2.3.4
+rconfig address add 192.168.34.2/24 interface wg0
+rconfig wireguard peer add newPeer1 wgInterface wg0
+rconfig wireguard peer set newPeer1 AllowedIp 0.0.0.0/0,::/0 DstAddress 1.2.3.4 PersistentKeepalive 25 DstPort 12345 PublicKey xxxx
+rconfig route add 21
+rconfig route set 21 Enable true Destination 10.0.0.0/8 Gateway 192.168.34.1
+
+# for direct communication with end of remote tunnel, add /32|/128 address directly via interface
+rconfig route add 22
+rconfig route set 22 Enable true Destination 192.168.34.1/32 Interface wg0
 ```

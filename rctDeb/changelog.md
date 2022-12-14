@@ -1,6 +1,13 @@
 #### rct_0.2-4_amd64
+- WARNING: static route configuration structure changed, remove all static routes before update
+- new: wireguard initial implementation (look at the configurationExamples.md for details)
+- new: add static route gateway via interface (look at the configurationExamples.md for details)
+- new: reworked static route CLI (look at the configurationExamples.md for details)
 - fix: rctKea6RouteHelper change set restored unknown routes expiration to 86400 
 - fix: rctKea6RouteHelper removed netns attribute
+- fix: make `rconfig commit dpdk` work inside controlplane
+- new: add ipv6 ND configuration options lifetime, min, max, managed, other
+- fix: change ipv6 RA default values to lifetime=1800, max=200, min=150, Managed=0, Other=0
 
 #### rct_0.2-3_amd64
 - WARNING: service structure reworked, past enabled service will not start automatically, enable it and commit & save again (bird,ssh...) - use MNG port to upgrade

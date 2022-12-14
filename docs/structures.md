@@ -1,15 +1,10 @@
 >### Main config file structure
 ```go
-package cfgStructures
-
-import (
-	"net"
-)
-
 type ConfigFileStruct struct {
 	Ethernet     []EthernetStruct
 	Loopback     []LoopbackStruct
 	BridgeDomain []BridgeDomainStruct
+	Wireguard    []WireguardInterfaceStruct
 	L2xConnect   []L2xConnectStruct
 	Vxlan        []VxlanStruct
 	Route        []RouteStruct
@@ -69,13 +64,15 @@ type SnmpdCfgStruct struct {
 
 type RouteStruct struct {
 	UserInstance uint32
-	Comment      Comment
 	Cfg          RouteCfgStruct
 }
 
 type RouteCfgStruct struct {
-	Destination string
-	Gateway     string
+	Enable      bool
+	Comment     Comment
+	Destination ip_types.Prefix
+	Gateway     ip_types.Address
+	Interface   IfName
 }
 
 ```
@@ -88,8 +85,13 @@ type Nat44Struct struct {
 }
 
 type RouterAdvertisementStruct struct {
-	Enable bool
-	Prefix string
+	Enable      bool
+	MaxInterval uint32
+	MinInterval uint32
+	Lifetime    uint32
+	Managed     uint8
+	Other       uint8
+	Prefix      string
 }
 
 type AbfPolicyStruct struct {
@@ -125,6 +127,38 @@ type EthernetCfgStruct struct {
 	DpdkRxQueues        uint8
 	DpdkTxQueues        uint8
 	Mtu                 uint32
+}
+
+type WireguardInterfaceStruct struct {
+	IfName       IfName
+	UserInstance uint32
+	Cfg          WireguardInterfaceCfgStruct
+}
+
+type WireguardInterfaceCfgStruct struct {
+	Comment    Comment
+	AdminUp    bool
+	Address    []ip_types.AddressWithPrefix
+	SrcAddress ip_types.Address
+	ListenPort uint16
+	PrivateKey string
+	PublicKey  string
+	Mtu        uint32
+	Peer       []WireguardPeerStruct
+}
+
+type WireguardPeerStruct struct {
+	PeerName IfName
+	Cfg      WireguardPeerCfgStruct
+}
+
+type WireguardPeerCfgStruct struct {
+	Comment             Comment
+	DstAddress          ip_types.Address
+	DstPort             uint16
+	PublicKey           string
+	AllowedIp           []ip_types.Prefix
+	PersistentKeepalive uint16
 }
 
 // vlan struct
