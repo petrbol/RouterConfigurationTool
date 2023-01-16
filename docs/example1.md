@@ -41,13 +41,6 @@ rconfig bridge port set vlan2601 Shg 1
 rconfig bridge port set vlan2602 Shg 1
 rconfig bridge port set vlan2603 Shg 1
 
-# configure policy to secure traffic
-rconfig abf policy add custPolicy interface loopBr1Cust
-rconfig abf rule add custPolicy IsPermit 0 SrcPrefix 192.168.0.0/16 DstPrefix 192.168.0.0/16
-rconfig abf rule add custPolicy IsPermit 1 SrcPrefix 192.168.0.0/16 DstPrefix 192.168.55.100/32
-rconfig abf path add 10 policy custPolicy
-rconfig abf path set 10 policy custPolicy ViaAddress 192.168.55.100 # to enable ping from 192.168.55.0/24 => 192.168.55.100/32
-
 # enable services 
 rconfig service bird onControlPlane set Enable true 
 rconfig service sshd onControlPlane set Enable true 

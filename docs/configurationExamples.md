@@ -126,3 +126,19 @@ rconfig route set 21 Enable true Destination 10.0.0.0/8 Gateway 192.168.34.1
 rconfig route add 22
 rconfig route set 22 Enable true Destination 192.168.34.1/32 Interface wg0
 ```
+***
+### ABF policy filtering
+```
+# loop0br0 is input interface with ipv4 192.168.54.100
+# enp2s0 is outbound interface
+# lower Weight pass first
+rconfig abf policy add custPolicy interface loop0br0
+rconfig abf path add path1 policy custPolicy 
+rconfig abf path add path2 policy custPolicy
+rconfig abf path set path1 ViaAddress 192.168.54.100 Weight 10
+rconfig abf path set path2 ViaInterface enp2s0 Weight 20
+rconfig abf rule add path1 SrcPrefix 192.168.0.0/16 DstPrefix 192.168.54.100/32 IsPermit 1
+rconfig abf rule add path2 SrcPrefix 192.168.0.0/16 DstPrefix 192.168.0.0/16 IsPermit 0
+rconfig abf rule add path2 SrcPrefix 192.168.0.0/16 DstPrefix 10.10.0.0/16 IsPermit 0
+rconfig abf rule add path2 SrcPrefix 192.168.0.0/16 DstPrefix 10.254.0.0/16 IsPermit 0
+```

@@ -1,3 +1,14 @@
+#### rct_0.2-5_amd64
+- WARNING: abf policy structure reworked, manual reconfiguration is necessary
+- WARNING: ipv6 RA structure reworked, old configuration will be lost, manual reconfiguration is necessary
+- WARNING: mtu configuration struct reworked, old configuration will be lost, manual reconfiguration is necessary
+- WARNING: nat44 configuration struct reworked, old configuration will be lost, manual reconfiguration is necessary
+- new: command `rconfig ra add|del interfaName`
+- new: command `rconfig nat44 add|del interfaceName`
+- new: mtu configuration extended for packet/ipv4/ipv6, example `rconfig ethernet set Mtu|MtuIPv4|MtuIPv6 1500`
+- new: add rctSnmpd wireguard interface statistics
+- fix: invalid attempt to add LCP interface 
+
 #### rct_0.2-4_amd64
 - WARNING: static route configuration structure changed, remove all static routes before update
 - new: wireguard initial implementation (look at the configurationExamples.md for details)
