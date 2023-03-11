@@ -5,7 +5,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 
 ### About
 
-- Based on VPP 22.10 & linux-cp plugin, ISC Kea DHCP, Bird internet routing daemon. Thanks to all people that participate in these projects.
+- Based on VPP 23.02 & linux-cp plugin, ISC Kea DHCP, Bird internet routing daemon. Thanks to all people that participate in these projects.
 - rconfig written in GO, Cobra cli interface, bash-completion
 - set of app: `rconfig, rctWatchdog, rctExporter, rctKeaWatchdog, rctKea6RouteHelper`
 - set of systemd services:\
@@ -85,10 +85,10 @@ Configuration and installation examples can be found in [docs](docs)
 >##### 3. download and install packages
 >```
 >mkdir rctDebPkg && cd rctDebPkg
->wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/libvppinfra_22.10-release_amd64.deb
->wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-core_22.10-release_amd64.deb
->wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp-plugin-dpdk_22.10-release_amd64.deb
->wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-22.10-patchedRA/vpp_22.10-release_amd64.deb
+>wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-23.02-release/libvppinfra_23.02-release_amd64.deb
+>wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-23.02-release/vpp-plugin-core_23.02-release_amd64.deb
+>wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-23.02-release/vpp-plugin-dpdk_23.02-release_amd64.deb
+>wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-23.02-release/vpp_23.02-release_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-common_2.0.3-isc20220725151155_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp4-server_2.0.3-isc20220725151155_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp6-server_2.0.3-isc20220725151155_amd64.deb
