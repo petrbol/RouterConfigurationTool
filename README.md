@@ -3,9 +3,13 @@
 
 Router Configuration Tool is simple configuration interface for Vector Path Processing (VPP, fd.io) with limited feature set. This tool is set of systemd services and few app. [changelog](rctDeb/changelog.md)
 
-### About
+### Latest news
+> - Current rct version 0.2-5
+> - Current VPP version 23.02
+> - Current kea version 2.0.3
 
-- Based on VPP 23.02 & linux-cp plugin, ISC Kea DHCP, Bird internet routing daemon. Thanks to all people that participate in these projects.
+### About
+- Based on VPP & linux-cp plugin, ISC Kea DHCP, Bird internet routing daemon. Thanks to all people that participate in these projects.
 - rconfig written in GO, Cobra cli interface, bash-completion
 - set of app: `rconfig, rctWatchdog, rctExporter, rctKeaWatchdog, rctKea6RouteHelper`
 - set of systemd services:\
@@ -82,35 +86,41 @@ Configuration and installation examples can be found in [docs](docs)
 ># run update grub bootloader
 >update-grub
 >```
->##### 3. download and install packages
+>##### 3. download VPP packages
 >```
 >mkdir rctDebPkg && cd rctDebPkg
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-23.02-release/libvppinfra_23.02-release_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-23.02-release/vpp-plugin-core_23.02-release_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-23.02-release/vpp-plugin-dpdk_23.02-release_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/vpp-23.02-release/vpp_23.02-release_amd64.deb
+>```
+>#### 4. download KEA dhcp server package
+> ```
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-common_2.0.3-isc20220725151155_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp4-server_2.0.3-isc20220725151155_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/kea-2.0.3/isc-kea-dhcp6-server_2.0.3-isc20220725151155_amd64.deb
->dpkg -i *.deb
->```
->##### 4. !!! FOR PC Engines APU board only !!! - alternative kernel to fix jitter issue
+> ```
+>#### 5. install deb package
+> ```
+> dpkg -i *.deb
+> ```
+>##### 6. !!! FOR PC Engines APU board only !!! - alternative kernel to fix jitter issue
 >```
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-headers-5.15.41_5.15.41-1_amd64.deb
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/kernel/5.15.41/linux-image-5.15.41_5.15.41-1_amd64.deb
 >dpkg -i linux-headers-5.15.41_5.15.41-1_amd64.deb linux-image-5.15.41_5.15.41-1_amd64.deb
 >```
->##### 5. disable VPP service and reboot
+>##### 7. disable VPP service and reboot
 >```
 >systemctl disable vpp
 >reboot
 >```
->##### 6. install Router Configuration Tool
+>##### 8. install Router Configuration Tool
 >```
 >wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-5_amd64.deb
 >dpkg -i rct_0.2-5_amd64.deb
 >```
->##### 7. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
+>##### 9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
 >```
 >. /etc/profile.d/rconfig.sh # reload bash completion file (or logout & login)
 >rconfig vpp setup # start setup
@@ -118,7 +128,7 @@ Configuration and installation examples can be found in [docs](docs)
 >rconfig save -f # save additional configuration before start
 >rconfig save default -f # save configuration file as default cfg (`rconfig restore default`)
 >```
->##### 8. If show your interfaces and you are still connected to the management port, you can enable rct on startup.
+>##### 10. If show your interfaces and you are still connected to the management port, you can enable rct on startup.
 >```
 ># start service
 >systemctl start rctStart && sleep 5
@@ -132,14 +142,20 @@ Configuration and installation examples can be found in [docs](docs)
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
 
-### How to upgrade
+### How to upgrade rct utility
 note: !!! install all actual dependents from upper section - point 3. !!!
 note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` exist, service `rctStart` will be started and enabled after startup.
 note: If you need upgrade VPP, use installation instruction above
-1. download latest rct version `wget -q https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-5_amd64.deb`
+1. download latest rct version: `Installation step 8.`
 2. install `dpkg -i rct_0.2-5_amd64.deb`
 3. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
+
+### How to upgrade VPP
+note: !!! vpp upgrade recommended via management interface only !!!
+1. disable service and reboot router `systemctl disable rctStart && reboot`
+2. download new VPP packages and install it with dpkg: `Installation step 3.`
+3. enable service and reboot router `systemctl enable rctStart && reboot`
 
 ### Useful commands
 `rconfig save` # save running configuration to startup\
