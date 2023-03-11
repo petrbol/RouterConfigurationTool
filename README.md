@@ -61,9 +61,6 @@ Configuration and installation examples can be found in [docs](docs)
 ### rconfig quick example & show
 ![rconfig example](img/rconfigExample.png?raw=true)
 
-### rctExporter quick look
-![rctExporter example](img/rctExporter.png?raw=true)
-
 ### Requirements
 * Debian 11
 * VPP capable hardware
