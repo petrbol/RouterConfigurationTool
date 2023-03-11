@@ -142,13 +142,12 @@ Configuration and installation examples can be found in [docs](docs)
 ### Remove
 `apt purge rct -y && rm -rf /etc/rct && reboot`
 
-### How to upgrade rct utility
+### How to upgrade rct
 note: !!! install all actual dependents from upper section - point 3. !!!
 note: Upgrade via management interface is preferred. If `/etc/rct/startup.cfg` exist, service `rctStart` will be started and enabled after startup.
 note: If you need upgrade VPP, use installation instruction above
-1. download latest rct version: `Installation step 8.`
-2. install `dpkg -i rct_0.2-5_amd64.deb`
-3. reload bash completion file (or logout & login to make bash-completion work again)\
+1. download and install latest rct version: `Installation step 8.`
+2. reload bash completion file (or logout & login to make bash-completion work again)\
 `. /etc/profile.d/rconfig.sh`
 
 ### How to upgrade VPP
