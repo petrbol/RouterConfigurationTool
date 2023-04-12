@@ -1,3 +1,9 @@
+#### rct_0.2-6_amd64
+- fix: improve ethernet link state handling VPP 23.02
+- fix: rctWatchdog improper config file restoration
+- fix: ipv6 ra not advertised on vlan
+- new: carrier grade nat - Det44 implementation (communication with linux control plane not working, only static configuration using management port)
+
 #### rct_0.2-5_amd64
 - WARNING: abf policy structure reworked, manual reconfiguration is necessary
 - WARNING: ipv6 RA structure reworked, old configuration will be lost, manual reconfiguration is necessary

@@ -142,3 +142,13 @@ rconfig abf rule add path2 SrcPrefix 192.168.0.0/16 DstPrefix 192.168.0.0/16 IsP
 rconfig abf rule add path2 SrcPrefix 192.168.0.0/16 DstPrefix 10.10.0.0/16 IsPermit 0
 rconfig abf rule add path2 SrcPrefix 192.168.0.0/16 DstPrefix 10.254.0.0/16 IsPermit 0
 ```
+***
+### CgNAT Det44 example
+```
+rconfig det44 set enp2s0 Feature outside
+rconfig det44 set enp3s0 Feature inside
+rconfig det44 prefix add 10
+rconfig det44 prefix set 10 Inside 192.168.15.0/24 Outside 1.2.3.0/30
+rconfig det44 show
+rconfig det44 prefix del 10
+```
