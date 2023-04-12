@@ -4,7 +4,7 @@
 Router Configuration Tool is simple configuration interface for Vector Path Processing (VPP, fd.io) with limited feature set. This tool is set of systemd services and few app. [changelog](rctDeb/changelog.md)
 
 ### Latest news
-> - Current rct version 0.2-5
+> - Current rct version 0.2-6
 > - Current VPP version 23.02
 > - Current kea version 2.0.3
 
@@ -114,7 +114,7 @@ Configuration and installation examples can be found in [docs](docs)
 >```
 >##### 8. install Router Configuration Tool
 >```
->wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-5_amd64.deb
+>wget -q --show-progress https://github.com/petrbol/RouterConfigurationTool/raw/main/rctDeb/rct_0.2-6_amd64.deb
 >dpkg -i rct_0.2-5_amd64.deb
 >```
 >##### 9. configure rct. Manual configuration or automatic setup. Setup will try to find network interfaces and offer you to add to add to the rct configuration.
