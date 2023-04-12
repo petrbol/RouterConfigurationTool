@@ -126,7 +126,7 @@ Configuration and installation examples can be found in [docs](docs)
 >rconfig save -f # save additional configuration before start
 >rconfig save default -f # save configuration file as default cfg (`rconfig restore default`)
 >```
->##### 10. If show your interfaces and you are still connected to the management port, you can enable rct on startup.
+>##### 10. If show your interfaces, you are still connected to the management port, you can enable rct on startup.
 >```
 ># start service
 >systemctl start rctStart && sleep 5
@@ -137,8 +137,13 @@ Configuration and installation examples can be found in [docs](docs)
 >##### DONE ... Enjoy
 
 
-### Remove
-`apt purge rct -y && rm -rf /etc/rct && reboot`
+### Remove manuall installed packages
+```
+apt purge rct -y && rm -rf /etc/rct
+apt purge isc-kea* -y
+apt purge vpp* -y
+reboot
+```
 
 ### How to upgrade rct
 note: !!! install all actual dependents from upper section - point 3. !!!
