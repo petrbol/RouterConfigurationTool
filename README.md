@@ -40,6 +40,7 @@ Router Configuration Tool is simple configuration interface for Vector Path Proc
 - L2xconnect
 - Exporter for interface statistics based on Prometheus(prometheus.io) with customized interface names, grafana template included
 - Watchdog
+- Det44
 - Preconfigured systemd services to access via separated namespace("controlplane"): `rctSshd, rctBird, rctSnmpdCp`
 - Preconfigured systemd services for ISC Kea dhcp server: `rctKea4, rctKea6, rctKeaWatchdog`
 - Simple source nat on output interface (nat44 + output feature)
